@@ -42,18 +42,18 @@ const SignupForm = (props) => {
           value={props.input.password}
         ></input>
       </div>
-      <div className="mb-3">
+      <div className="mb-3 w-full">
         <label className="block font-semibold font-md">Confirm Password</label>
         <input
           type="password"
-          className= {`border border-purple-300 border-opacity-75 outline-none focus:border-purple-400 rounded w-full h-8 p-2`}
+          className= {`border border-purple-300 border-opacity-75 w-5/6 outline-none rounded h-8 p-2${props.samePassword ? " focus:border-purple-500 " : " focus:border-red-500"}`}
           onChange={props.onChange}
           name="confirmpassword"
           value={props.input.confirmpassword}
-        ></input>
+  ></input><span className="inline-block text-red-700 font-bold" style={props.samePassword ? { visibility: "collapse"} : { visibility: "visible"}}>&nbsp;&nbsp;&nbsp;x</span>
       </div>
       <button
-        className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm items-center hover:bg-purple-800"
+        className="bg-purple-700 w-full p-2 text-white outline-none rounded mb-3 font-semibold text-sm items-center hover:bg-purple-800"
         type="submit"
       >
 

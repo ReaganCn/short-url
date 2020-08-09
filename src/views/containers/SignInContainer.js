@@ -25,26 +25,37 @@ const mapDispatchToProps = (dispatch) => {
 const SignInContainer = (props) => {
   const [isFetching, setisFetching] = useState(false);
   const [signIn, setsignIn] = useState(true);
+  const [samePassword, setsamePassword] = useState(false);
+
+useEffect(() => {
+if(props.state.password === props.state.confirmpassword) {
+  setsamePassword(true)
+}else {
+  setsamePassword(false)
+}
+}, [props.state.confirmpassword])
 
   const toggleForm = () => {
     signIn ? setsignIn(false) : setsignIn(true);
   };
 
   const handleSubmit = (event) => {
-    setisFetching(true);
-    // console.log(JSON.stringify(props.state))
-    fetch("https://reagan-urlshort.glitch.me/users/add", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(props.state),
-    })
-      .then((result) => result.json())
-      .then((info) => {
-        console.log(info);
-        setisFetching(false);
-      });
+    if (samePassword && props.state.password.length > 1) {
+      setisFetching(true);
+      // console.log(JSON.stringify(props.state))
+      fetch("https://reagan-urlshort.glitch.me/users/add", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(props.state),
+      })
+        .then((result) => result.json())
+        .then((info) => {
+          console.log(info);
+          setisFetching(false);
+        });
+    }
     event.preventDefault();
   };
 
@@ -54,6 +65,8 @@ const SignInContainer = (props) => {
         <div className="flex justify-center md:justify-start md:m-10">
           {signIn ? (
             <SigninForm 
+            input={props.state}
+            onChange={() => props.handleChange(event)}
             toggleForm = {() => toggleForm()}
             />
           ) : (
@@ -63,6 +76,7 @@ const SignInContainer = (props) => {
               onSubmit={() => handleSubmit(event)}
               isFetching={isFetching}
               toggleForm = {() => toggleForm()}
+              samePassword = {samePassword}
             />
           )}
         </div>

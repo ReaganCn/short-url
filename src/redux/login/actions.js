@@ -8,7 +8,6 @@ const submitDetailsAction = () => {
 
 const handleChange = (event) => {
   const { name, value } = event.target;
-
   return {
     type: ON_CHANGE,
     name,
