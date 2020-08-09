@@ -32,7 +32,7 @@ const SigninForm = (props) => {
         ></input>
       </div>
       <button
-        className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm hover:bg-purple-800 outline-none"
+        className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm hover:bg-purple-800"
         type="submit"
       >
         Sign In
@@ -41,7 +41,7 @@ const SigninForm = (props) => {
         Don't have an account?{" "}
         <a
           onClick={props.toggleForm}
-          className="text-purple-700 cursor-pointer hover:text-purple-900"
+          className="text-purple-700 cursor-pointer hover:text-purple-900 active:scale-50"
         >
           {" "}
           Sign Up
