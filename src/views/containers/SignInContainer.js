@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import SignupForm from "../components/SignupForm";
 import { handleChange, postingDetails } from "../../redux/login/actions";
+import SigninForm from "../components/SigninForm";
 
 const mapStateToProps = ({ signin }) => {
   return {
@@ -23,9 +24,14 @@ const mapDispatchToProps = (dispatch) => {
 
 const SignInContainer = (props) => {
   const [isFetching, setisFetching] = useState(false);
+  const [signIn, setsignIn] = useState(true);
+
+  const toggleForm = () => {
+    signIn ? setsignIn(false) : setsignIn(true);
+  };
 
   const handleSubmit = (event) => {
-    setisFetching(true)
+    setisFetching(true);
     // console.log(JSON.stringify(props.state))
     fetch("https://reagan-urlshort.glitch.me/users/add", {
       method: "POST",
@@ -36,22 +42,29 @@ const SignInContainer = (props) => {
     })
       .then((result) => result.json())
       .then((info) => {
-          console.log(info)
-          setisFetching(false)
+        console.log(info);
+        setisFetching(false);
       });
     event.preventDefault();
   };
 
   return (
     <Fragment>
-      <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-xl">
+      <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-2xl">
         <div className="flex justify-center md:justify-start md:m-10">
-          <SignupForm
-            input={props.state}
-            onChange={() => props.handleChange(event)}
-            onSubmit={() => handleSubmit(event)}
-            isFetching={isFetching}
-          />
+          {signIn ? (
+            <SigninForm 
+            toggleForm = {() => toggleForm()}
+            />
+          ) : (
+            <SignupForm
+              input={props.state}
+              onChange={() => props.handleChange(event)}
+              onSubmit={() => handleSubmit(event)}
+              isFetching={isFetching}
+              toggleForm = {() => toggleForm()}
+            />
+          )}
         </div>
       </div>
     </Fragment>

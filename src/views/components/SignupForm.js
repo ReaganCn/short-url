@@ -12,7 +12,7 @@ const SignupForm = (props) => {
         </label>
         <input
           type="text"
-          className="border border-purple-300 border-opacity-75 rounded w-full h-8 p-2"
+          className="border border-purple-300 border-opacity-75 outline-none focus:border-purple-400 rounded w-full h-8 p-2"
           onChange={props.onChange}
           name="firstname"
           value={props.input.firstname}
@@ -24,7 +24,7 @@ const SignupForm = (props) => {
         </label>
         <input
           type="text"
-          className="border border-purple-300 border-opacity-75 rounded w-full h-8 p-2"
+          className="border border-purple-300 border-opacity-75 outline-none focus:border-purple-400 rounded w-full h-8 p-2"
           onChange={props.onChange}
           name="username"
           value={props.input.username}
@@ -36,7 +36,7 @@ const SignupForm = (props) => {
         </label>
         <input
           type="password"
-          className="border border-purple-300 border-opacity-75 rounded w-full h-8 p-2"
+          className="border border-purple-300 border-opacity-75 outline-none focus:border-purple-400 rounded w-full h-8 p-2"
           onChange={props.onChange}
           name="password"
           value={props.input.password}
@@ -46,14 +46,14 @@ const SignupForm = (props) => {
         <label className="block font-semibold font-md">Confirm Password</label>
         <input
           type="password"
-          className="border border-purple-300 border-opacity-75 rounded w-full h-8 p-2"
+          className= {`border border-purple-300 border-opacity-75 outline-none focus:border-purple-400 rounded w-full h-8 p-2`}
           onChange={props.onChange}
           name="confirmpassword"
           value={props.input.confirmpassword}
         ></input>
       </div>
       <button
-        className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm items-center"
+        className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm items-center hover:bg-purple-800"
         type="submit"
       >
 
@@ -68,10 +68,9 @@ const SignupForm = (props) => {
         />
       </button>
       <p className="mb-3 text-sm">
-        Already have an account?{" "}
-        <a href="" className="text-purple-700">
-          {" "}
-          Sign In
+        Already have an account?&nbsp;
+        <a onClick={props.toggleForm} className="text-purple-700 cursor-pointer hover:text-purple-900">
+           Sign In
         </a>
       </p>
     </form>
