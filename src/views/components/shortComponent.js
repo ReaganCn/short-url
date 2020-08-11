@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignupForm = (props) => {
+const ShortComponent = (props) => {
   return (
     <div className="w-11/12 flex flex-col mt-16 justify-center align-middle border rounded p-12 mx-auto">
     <div className="self-center">
@@ -18,4 +18,4 @@ const SignupForm = (props) => {
   );
 };
 
-export default SignupForm;
+export default ShortComponent;

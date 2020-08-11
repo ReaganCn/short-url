@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
+import ShortComponent from "../components/ShortComponent";
 
 
 const mapStateToProps = ({ signin }) => {
@@ -14,19 +15,19 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const shortContainer = (props) => {
+const ShortContainer = (props) => {
 
 
   return (
     <Fragment>
-
+      <ShortComponent />
     </Fragment>
   );
 };
 
-const shortConnected = connect(
+const ShortConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(shortContainer);
+)(ShortContainer);
 
-export default shortConnected;
+export default ShortConnected;
