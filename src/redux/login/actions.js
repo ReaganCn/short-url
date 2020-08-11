@@ -1,4 +1,4 @@
-import { SUBMIT_DETAILS, ON_CHANGE } from "./types";
+import { SUBMIT_DETAILS, ON_CHANGE, AUTH_USER } from "./types";
 
 const submitDetailsAction = () => {
   return {
@@ -15,19 +15,11 @@ const handleChange = (event) => {
   };
 };
 
-const postingDetails = (data) => {
-    return (dispatch) => {
-     return fetch('https://reagan-urlshort.glitch.me/users/add', {
-        method: "POST",
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(data)
-        .then((result) => {
-          console.log(result)
-        })
-     })   
-    }
-};
+const authenticateUser = (value) => {
+  return {
+    type: AUTH_USER,
+    value
+  }
+}
 
-export {handleChange, postingDetails};
+export {handleChange, authenticateUser};

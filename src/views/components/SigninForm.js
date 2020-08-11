@@ -2,7 +2,7 @@ import React from "react";
 
 const SigninForm = (props) => {
   return (
-    <form action="" className="md:w-1/3 self-center sign-in">
+    <form className="md:w-1/3 self-center sign-in" onSubmit={props.login}>
       <p className="lg:text-2xl font-bold md:text-xl text-lg tracking-wide pb-2">
         Sign in to your account
       </p>
@@ -34,6 +34,7 @@ const SigninForm = (props) => {
       <button
         className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm hover:bg-purple-800"
         type="submit"
+        
       >
         Sign In
       </button>
@@ -43,7 +44,6 @@ const SigninForm = (props) => {
           onClick={props.toggleForm}
           className="text-purple-700 cursor-pointer hover:text-purple-900 active:scale-50"
         >
-          {" "}
           Sign Up
         </a>
       </p>

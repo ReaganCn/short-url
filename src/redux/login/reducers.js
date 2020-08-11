@@ -1,11 +1,12 @@
-import { ON_CHANGE } from "./types";
+import { ON_CHANGE, AUTH_USER } from "./types";
 
 
 const defaultState = {
 firstname: "",
 username: "",
 password: "",
-confirmpassword: ""
+confirmpassword: "",
+authenticated: false
 }
 
 const signinReducer = ( state = defaultState, action) => {
@@ -18,6 +19,16 @@ const signinReducer = ( state = defaultState, action) => {
                 }else {
                     return Object.assign({}, state, {
                         username: action.value.split(" ").join("").toLowerCase()
+                    })
+                }
+            case AUTH_USER:
+                if (action.value){
+                    return Object.assign({}, state, {
+                        authenticated: true
+                    })
+                }else {
+                    return Object.assign({}, state, {
+                        authenticated: null
                     })
                 }
             default:

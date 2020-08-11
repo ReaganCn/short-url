@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import SignupForm from "../components/SignupForm";
-import { handleChange, postingDetails } from "../../redux/login/actions";
+import { handleChange, authenticateUser } from "../../redux/login/actions";
 import SigninForm from "../components/SigninForm";
 
 const mapStateToProps = ({ signin }) => {
@@ -16,8 +16,8 @@ const mapDispatchToProps = (dispatch) => {
     handleChange: (event) => {
       dispatch(handleChange(event));
     },
-    submitDetails: (data) => {
-      dispatch(postingDetails(data));
+    loginAction: (value) => {
+      dispatch(authenticateUser(value));
     },
   };
 };
@@ -27,13 +27,13 @@ const SignInContainer = (props) => {
   const [signIn, setsignIn] = useState(true);
   const [samePassword, setsamePassword] = useState(false);
 
-useEffect(() => {
-if(props.state.password === props.state.confirmpassword) {
-  setsamePassword(true)
-}else {
-  setsamePassword(false)
-}
-}, [props.state.confirmpassword])
+  useEffect(() => {
+    if (props.state.password === props.state.confirmpassword) {
+      setsamePassword(true);
+    } else {
+      setsamePassword(false);
+    }
+  }, [props.state.confirmpassword]);
 
   const toggleForm = () => {
     signIn ? setsignIn(false) : setsignIn(true);
@@ -52,10 +52,32 @@ if(props.state.password === props.state.confirmpassword) {
       })
         .then((result) => result.json())
         .then((info) => {
-          console.log(info);
           setisFetching(false);
         });
     }
+    event.preventDefault();
+  };
+
+  const loginUser = (event) => {
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url = "https://reagan-urlshort.glitch.me/users/authenticate";
+    const data = {
+      username: props.state.username,
+      password: props.state.password,
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((result) => result.json())
+      .then((authenticate) => {
+        console.log(authenticate)
+        props.loginAction(authenticate)
+      });
     event.preventDefault();
   };
 
@@ -64,10 +86,11 @@ if(props.state.password === props.state.confirmpassword) {
       <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-2xl">
         <div className="flex justify-center md:justify-start md:m-10">
           {signIn ? (
-            <SigninForm 
-            input={props.state}
-            onChange={() => props.handleChange(event)}
-            toggleForm = {() => toggleForm()}
+            <SigninForm
+              input={props.state}
+              onChange={() => props.handleChange(event)}
+              toggleForm={() => toggleForm()}
+              login={() => loginUser(event)}
             />
           ) : (
             <SignupForm
@@ -75,8 +98,8 @@ if(props.state.password === props.state.confirmpassword) {
               onChange={() => props.handleChange(event)}
               onSubmit={() => handleSubmit(event)}
               isFetching={isFetching}
-              toggleForm = {() => toggleForm()}
-              samePassword = {samePassword}
+              toggleForm={() => toggleForm()}
+              samePassword={samePassword}
             />
           )}
         </div>
