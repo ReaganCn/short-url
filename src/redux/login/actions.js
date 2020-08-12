@@ -22,4 +22,4 @@ const authenticateUser = (value) => {
   }
 }
 
-export {handleChange, authenticateUser};
+export {authenticateUser};

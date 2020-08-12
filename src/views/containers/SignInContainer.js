@@ -2,8 +2,9 @@ import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import SignupForm from "../components/SignupForm";
-import { handleChange, authenticateUser } from "../../redux/login/actions";
+import { authenticateUser } from "../../redux/login/actions";
 import SigninForm from "../components/SigninForm";
+import { handleChange } from "../../redux/app/actions";
 
 const mapStateToProps = ({ signin }) => {
   return {
