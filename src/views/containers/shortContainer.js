@@ -34,12 +34,17 @@ useEffect(()=> {
     event.preventDefault();
     props.shortenUrl(originalUrl);
   };
+
+  const handleClick = () => {
+    document.getElementById("output").remove()
+  }
   return (
     <Fragment>
       <ShortComponent
         input={props.state}
         onSubmit={() => handleShorten(event)}
         handleChange={() => props.handleInput(event)}
+        handleClick ={()=> handleClick()}
       />
     </Fragment>
   );
