@@ -7,16 +7,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
        
     </head>
-    <body>
+    <body class="">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="root"></div>
-            <div class="flex w-11/12 justify-center">
-                <div class="flex flex-row justify-between border border-t-0 border-r-0 border-l-0 mb-1 border-purple-300 pb-1 w-11/12">
-                    <p class="">www.google.com</p>
-                    <p class="">link0.ga/gtf2</p>
-                    <span class="">Expires in: <small>29 days</small></span>
+            <div class="flex w-11/12 justify-center flex-col m-2 mx-auto h-64">
+                <div class="w-4/12 border border-gray-400 px-3 pt-2 shadow-2xl rounded text-white bg-purple-700">
+                    <div class="flex flex-row justify-between self-start mb-3 font-semibold">
+                        <small>AUG 12</small>
+                        <small>Expiry: 29 days</small>
+                    </div>
+                    <div class="flex flex-row justify-between mb-2 self-end">
+                        <a href="#" class="text-sm self-end">www.google.com</a>
+                        <p class="font-semibold text-base self-end">link0.ga/gtf2</p>
+                        <button class="border border-white font-bold my-0 self-end p-1 rounded-md text-xs px-4">
+                            Copy
+                          </button>
+                    </div>
                 </div>
             </div>
                 
