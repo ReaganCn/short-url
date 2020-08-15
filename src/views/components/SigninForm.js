@@ -39,7 +39,7 @@ const SigninForm = (props) => {
         Sign In
       </button>
       <p className="mb-3 text-sm">
-        Don't have an account?{" "}
+        Don't have an account?
         <a
           onClick={props.toggleForm}
           className="text-purple-700 cursor-pointer hover:text-purple-900 active:scale-50"

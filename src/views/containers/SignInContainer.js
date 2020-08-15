@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import SignupForm from "../components/SignupForm";
 import { authenticateUser } from "../../redux/login/actions";
 import SigninForm from "../components/SigninForm";
-import { handleChange } from "../../redux/app/actions";
+import { handleChange, loginAction } from "../../redux/app/actions";
 
 const mapStateToProps = ({ signin }) => {
   return {
@@ -17,8 +17,11 @@ const mapDispatchToProps = (dispatch) => {
     handleChange: (event) => {
       dispatch(handleChange(event));
     },
-    loginAction: (value) => {
+    autheticateAction: (value) => {
       dispatch(authenticateUser(value));
+    },
+    loginAction: () => {
+      dispatch(loginAction());
     },
   };
 };
@@ -76,8 +79,8 @@ const SignInContainer = (props) => {
     })
       .then((result) => result.json())
       .then((authenticate) => {
-        console.log(authenticate)
-        props.loginAction(authenticate)
+        props.autheticateAction(authenticate);
+        authenticate && props.loginAction();
       });
     event.preventDefault();
   };
