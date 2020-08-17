@@ -9,11 +9,9 @@ import store from "./redux/rootStore";
 
 const Main = (props) => {
   return (
-    <BrowserRouter>
       <Provider store={store}>
         <AppConnected />
       </Provider>
-    </BrowserRouter>
   );
 };
 

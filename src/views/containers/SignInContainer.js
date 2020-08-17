@@ -6,9 +6,10 @@ import { authenticateUser } from "../../redux/login/actions";
 import SigninForm from "../components/SigninForm";
 import { handleChange, loginAction } from "../../redux/app/actions";
 
-const mapStateToProps = ({ signin }) => {
+const mapStateToProps = ({ signin, app }) => {
   return {
     state: signin,
+    app: app
   };
 };
 
@@ -84,10 +85,10 @@ const SignInContainer = (props) => {
       });
     event.preventDefault();
   };
-
+// style={ props.app.isLoggedin ? {visibility : "collapse"}: {visibility : "visible"}}
   return (
     <Fragment>
-      <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-2xl">
+      <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-2xl" >
         <div className="flex justify-center md:justify-start md:m-10">
           {signIn ? (
             <SigninForm

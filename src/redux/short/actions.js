@@ -16,8 +16,6 @@ const receiveAction = (shorturl) => {
 }
 
 const getShortUrl = (data) => {
-    const newData = JSON.stringify(data)
-    console.log(newData)
     return (dispatch) => {
         dispatch(submitAction());
         //console.log("here")
@@ -29,7 +27,6 @@ const getShortUrl = (data) => {
             body: JSON.stringify(data),
         }).then( doc => doc.json())
         .then (newUrl => {
-            console.log(newUrl)
             dispatch(receiveAction(newUrl.short_url))
         })
         .catch(err => console.log(err))

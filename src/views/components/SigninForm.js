@@ -43,7 +43,7 @@ const SigninForm = (props) => {
         <a
           onClick={props.toggleForm}
           className="text-purple-700 cursor-pointer hover:text-purple-900 active:scale-50"
-        >
+        >&nbsp;
           Sign Up
         </a>
       </p>

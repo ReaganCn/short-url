@@ -23,6 +23,15 @@ const mapDispatchToProps = (dispatch) => {
 
 const ShortContainer = (props) => {
 
+
+const handleUrl = (url) => {
+  const limit = 35;
+  if (url.length > limit){
+    return url.slice(0, limit) + "..."
+  }
+  return url;
+}
+
 useEffect(()=> {
 
 }, [props.state.shorturl])
@@ -45,6 +54,7 @@ useEffect(()=> {
         onSubmit={() => handleShorten(event)}
         handleChange={() => props.handleInput(event)}
         handleClick ={()=> handleClick()}
+        handleUrl = {handleUrl(props.state.url)}
       />
     </Fragment>
   );

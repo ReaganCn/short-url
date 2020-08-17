@@ -1,17 +1,18 @@
 import { LOGIN, LOGOUT } from "./types"
 
 const defaultState = {
-  isLoggedin: false,
+  isLoggedin: true,
 };
 
 const appReducer = (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN:
-        Object.assign({},state, {
+      
+       return Object.assign({},state, {
             isLoggedin: true
         })
     case LOGOUT:
-        Object.assign({},state, {
+       return Object.assign({},state, {
             isLoggedin: false
         })
     default:

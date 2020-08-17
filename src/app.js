@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import SignInConnected from "./views/containers/SignInContainer";
 import ShortConnected from "./views/containers/ShortContainer";
+import HomeConnected from "./views/containers/HomeContainer";
 
 const mapStateToProps = ({ app }) => {
   return {
@@ -17,8 +18,9 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
   return (
     <Fragment>
-      <SignInConnected />
-      <ShortConnected />
+      {props.state.isLoggedin ? <HomeConnected /> : <SignInConnected />}
+      
+      
     </Fragment>
   );
 };
