@@ -70,7 +70,7 @@ const SignInContainer = (props) => {
       username: props.state.username,
       password: props.state.password,
     };
-
+    setisFetching(true);
     fetch(url, {
       method: "POST",
       headers: {
@@ -80,6 +80,7 @@ const SignInContainer = (props) => {
     })
       .then((result) => result.json())
       .then((authenticate) => {
+        setisFetching(false);
         props.autheticateAction(authenticate);
         authenticate && props.loginAction();
       });
@@ -96,6 +97,7 @@ const SignInContainer = (props) => {
               onChange={() => props.handleChange(event)}
               toggleForm={() => toggleForm()}
               login={() => loginUser(event)}
+              isFetching={isFetching}
             />
           ) : (
             <SignupForm

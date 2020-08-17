@@ -34,17 +34,27 @@ const SigninForm = (props) => {
       <button
         className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm hover:bg-purple-800"
         type="submit"
-        
       >
-        Sign In
+        <span
+          style={props.isFetching ? { display: "none" } : { display: "block" }}
+        >
+          Sign In
+        </span>
+
+        <img
+          style={props.isFetching ? { display: "block" } : { display: "none" }}
+          className="w-6 h-6 inline m-auto"
+          id="loader"
+          src="public/imgs/customloader-white.png"
+        />
       </button>
       <p className="mb-3 text-sm">
         Don't have an account?
         <a
           onClick={props.toggleForm}
           className="text-purple-700 cursor-pointer hover:text-purple-900 active:scale-50"
-        >&nbsp;
-          Sign Up
+        >
+          &nbsp; Sign Up
         </a>
       </p>
     </form>

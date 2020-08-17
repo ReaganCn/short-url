@@ -13,7 +13,8 @@ const shorteningReducer = ( state = defaultState, action) => {
         switch (action.type) {
             case ON_CHANGE:
                 return Object.assign({}, state, {
-                    [action.name]: action.value    
+                    [action.name]: action.value,
+                    shorturl: ""    
                 })
             case SUBMIT_URL:
                 return Object.assign ({}, state, {

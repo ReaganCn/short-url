@@ -23,7 +23,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const ShortContainer = (props) => {
 
-
 const handleUrl = (url) => {
   const limit = 35;
   if (url.length > limit){
@@ -31,10 +30,6 @@ const handleUrl = (url) => {
   }
   return url;
 }
-
-useEffect(()=> {
-
-}, [props.state.shorturl])
 
   const handleShorten = (event) => {
     const originalUrl = {
@@ -55,6 +50,7 @@ useEffect(()=> {
         handleChange={() => props.handleInput(event)}
         handleClick ={()=> handleClick()}
         handleUrl = {handleUrl(props.state.url)}
+        isFetching = {props.state.isFetching}
       />
     </Fragment>
   );

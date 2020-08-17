@@ -25,7 +25,22 @@ const ShortComponent = (props) => {
             type="submit"
             // onClick={props.handleClick}
           >
-            Create
+            <span
+              style={
+                props.isFetching ? { display: "none" } : { display: "block" }
+              }
+            >
+              Create
+            </span>
+
+            <img
+              style={
+                props.isFetching ? { display: "block" } : { display: "none" }
+              }
+              className="w-6 h-6 inline m-auto"
+              id="loader"
+              src="public/imgs/customloader-white.png"
+            />
           </button>
         </form>
         <div
@@ -34,7 +49,7 @@ const ShortComponent = (props) => {
           style={
             props.input.shorturl === ""
               ? { visibility: "collapse" }
-              : { visibility: "visible" }
+              : { visibility: "visible", animation: "grow 0.2s linear" }
           }
         >
           <div className="flex flex-col md:flex-row justify-between border mb-1 border-purple-200 rounded pl-2 md:p-0 mt-3">

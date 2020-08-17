@@ -64,7 +64,8 @@ const SignupForm = (props) => {
         <img
         style ={ props.isFetching ? {display : "block"} : {display : "none"}}
           className="w-6 h-6 inline m-auto"
-          src="public/imgs/loading6.gif"
+          id="loader"
+          src="public/imgs/customloader-white.png"
         />
       </button>
       <p className="mb-3 text-sm">
