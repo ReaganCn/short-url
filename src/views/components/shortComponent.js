@@ -57,7 +57,7 @@ const ShortComponent = (props) => {
               {props.handleUrl}
             </p>
             <a
-              className="md:self-center font-semibold text-blue-600"
+              className="md:self-center font-semibold text-blue-700"
               href={`http://link0.ga/${props.input.shorturl}`}
               target="_blank"
             >
