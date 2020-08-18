@@ -4,16 +4,17 @@ import ShortComponent from "../components/ShortComponent";
 import { getShortUrl } from "../../redux/short/actions";
 import { handleChange } from "../../redux/app/actions";
 
-const mapStateToProps = ({ shorten }) => {
+const mapStateToProps = ({ shorten, app }) => {
   return {
     state: shorten,
+    app: app
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    shortenUrl: (data) => {
-      dispatch(getShortUrl(data));
+    shortenUrl: (data, user) => {
+      dispatch(getShortUrl(data, user));
     },
     handleInput: (event) => {
       dispatch(handleChange(event));
@@ -36,7 +37,7 @@ const handleUrl = (url) => {
       url: props.state.url,
     };
     event.preventDefault();
-    props.shortenUrl(originalUrl);
+    props.shortenUrl(originalUrl, props.app.user);
   };
 
   const handleClick = () => {

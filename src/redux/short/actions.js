@@ -15,11 +15,11 @@ const receiveAction = (shorturl) => {
     }
 }
 
-const getShortUrl = (data) => {
+const getShortUrl = (data, user) => {
     return (dispatch) => {
         dispatch(submitAction());
         //console.log("here")
-        return fetch('https://reagan-urlshort.glitch.me/shorturl/', {
+        return fetch(`https://reagan-urlshort.glitch.me/shorturl?username=${user}`, {
             method: "POST",
             headers: {
               "Content-type": "application/json",

@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
     autheticateAction: (value) => {
       dispatch(authenticateUser(value));
     },
-    loginAction: () => {
-      dispatch(loginAction());
+    loginAction: (user) => {
+      dispatch(loginAction(user));
     },
   };
 };
@@ -69,7 +69,7 @@ const SignInContainer = (props) => {
     const data = {
       username: props.state.username,
       password: props.state.password,
-    };
+    }; 
     setisFetching(true);
     fetch(url, {
       method: "POST",
@@ -82,7 +82,7 @@ const SignInContainer = (props) => {
       .then((authenticate) => {
         setisFetching(false);
         props.autheticateAction(authenticate);
-        authenticate && props.loginAction();
+        authenticate && props.loginAction(props.state.username);
       });
     event.preventDefault();
   };

@@ -2,6 +2,8 @@ import { LOGIN, LOGOUT } from "./types"
 
 const defaultState = {
   isLoggedin: true,
+  user: "",
+  previousUrls: []
 };
 
 const appReducer = (state = defaultState, action) => {
@@ -9,7 +11,8 @@ const appReducer = (state = defaultState, action) => {
     case LOGIN:
       
        return Object.assign({},state, {
-            isLoggedin: true
+            isLoggedin: true,
+            user: action.user
         })
     case LOGOUT:
        return Object.assign({},state, {
