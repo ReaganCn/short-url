@@ -15,6 +15,8 @@ const receiveAction = (shorturl) => {
     }
 }
 
+
+
 const getShortUrl = (data, user) => {
     return (dispatch) => {
         dispatch(submitAction());

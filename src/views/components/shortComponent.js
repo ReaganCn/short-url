@@ -2,10 +2,7 @@ import React from "react";
 
 const ShortComponent = (props) => {
   return (
-    <div
-      className="w-9/12 flex flex-col mt-16 border rounded p-12 mx-auto shadow-2xl"
-      id="short-component"
-    >
+
       <div className="">
         <form
           className=" flex flex-row self-start h-10 justify-between"
@@ -74,7 +71,6 @@ const ShortComponent = (props) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

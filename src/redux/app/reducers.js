@@ -3,7 +3,7 @@ import { LOGIN, LOGOUT } from "./types"
 const defaultState = {
   isLoggedin: false,
   user: "",
-  previousUrls: []
+  previousLinks: []
 };
 
 const appReducer = (state = defaultState, action) => {
