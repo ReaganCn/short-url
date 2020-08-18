@@ -1,7 +1,7 @@
 import { LOGIN, LOGOUT } from "./types"
 
 const defaultState = {
-  isLoggedin: true,
+  isLoggedin: false,
   user: "",
   previousUrls: []
 };
