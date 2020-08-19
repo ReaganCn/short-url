@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     loginAction: (user) => {
       dispatch(loginAction(user));
     },
+    // getUserLinks: (username) => {
+    //   dispatch(getLinks(username));
+    // }
   };
 };
 
@@ -83,6 +86,7 @@ const SignInContainer = (props) => {
         setisFetching(false);
         props.autheticateAction(authenticate);
         authenticate && props.loginAction(props.state.username);
+      //  authenticate && props.getUserLinks(props.state.username)
       });
     event.preventDefault();
   };
