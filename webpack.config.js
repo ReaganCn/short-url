@@ -1,6 +1,6 @@
+require("babel-polyfill");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./public/index.html",
@@ -9,6 +9,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 
 module.exports = {
+    entry: "./src/index.js",
     module: {
       rules: [
         {
