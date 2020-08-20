@@ -6,7 +6,16 @@
 
 
 /* Custom CSS*/
+button {
+  outline: none !important;
+}
 
+/* #copy-popup {
+  top: 0;
+ 
+  transform: translateX(50%);
+
+} */
 #loader {
     animation: spin 0.7s linear infinite;
   }

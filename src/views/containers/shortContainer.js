@@ -4,6 +4,7 @@ import ShortComponent from "../components/ShortComponent";
 import { getShortUrl } from "../../redux/short/actions";
 import { handleChange, getLinks } from "../../redux/app/actions";
 import HistoryComponent from "../components/HistoryComponent";
+import copy from "copy-to-clipboard"
 
 const mapStateToProps = ({ shorten, app }) => {
   return {
@@ -37,7 +38,9 @@ const handleUrl = (url, limit) => {
 // React
 
 const ShortContainer = (props) => {
-  // console.log(props.app.username)
+  const [copyPopup, setcopyPopup] = useState(false);
+
+
   useEffect(() => {
     if (props.app.user.length > 1) {
       props.getUserLinks(props.app.user);
@@ -55,6 +58,14 @@ const ShortContainer = (props) => {
   const handleClick = () => {
     document.getElementById("output").remove();
   };
+
+  const copyUrl = () => {
+    copy(`link0.ga/${props.state.shorturl}`);
+    setcopyPopup(true);
+    setTimeout(()=> {
+        setcopyPopup(false);
+    },3000)
+  }
 
   const historyLinks = props.app.previousLinks.slice(0, 5).map((item) => {
     return (
@@ -79,6 +90,8 @@ const ShortContainer = (props) => {
           handleClick={() => handleClick()}
           handleUrl={handleUrl(props.state.url, 35)}
           isFetching={props.state.isFetching}
+          copyUrl = {()=> copyUrl()}
+          copyPopup ={copyPopup}
         />
         <span className="text-xl my-4">Your History</span>
         {historyLinks}
