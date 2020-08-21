@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import ShortComponent from "../components/ShortComponent";
-import { getShortUrl } from "../../redux/short/actions";
+import { getShortUrl, customizeLink } from "../../redux/short/actions";
 import { handleChange, getLinks } from "../../redux/app/actions";
 import HistoryComponent from "../components/HistoryComponent";
 import copy from "copy-to-clipboard"
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     getUserLinks: (username) => {
       dispatch(getLinks(username));
     },
+    getCustomLink: (id, url, username) => {
+      dispatch(customizeLink(id, url, username));
+    }
   };
 };
 
@@ -47,6 +50,10 @@ const ShortContainer = (props) => {
     }
   }, [props.state.shorturl]);
 
+  useEffect(() => {
+    evaluateShort();
+  }, [props.state.custom])
+
   const handleShorten = (event) => {
     setCustomize(false)
     const originalUrl = {
@@ -61,7 +68,7 @@ const ShortContainer = (props) => {
   };
 
   const copyUrl = () => {
-    copy(`link0.ga/${props.state.shorturl}`);
+    copy(`link0.ga/${evaluateShort()}`);
     setcopyPopup(true);
     setTimeout(()=> {
         setcopyPopup(false);
@@ -72,7 +79,15 @@ const ShortContainer = (props) => {
     customize ? setCustomize(false) : setCustomize(true);
     if (customize){
      //save the custom name to database
+     props.getCustomLink(props.state.linkid,props.state.customurl, props.app.user);
     }
+  }
+
+  const evaluateShort = () => {
+    if(props.state.custom === ""){
+      return props.state.shorturl;
+    }
+    return props.state.custom
   }
 
   const historyLinks = props.app.previousLinks.slice(0, 5).map((item) => {
@@ -93,6 +108,7 @@ const ShortContainer = (props) => {
       >
         <ShortComponent
           input={props.state}
+          shorturl = {evaluateShort()}
           onSubmit={() => handleShorten(event)}
           handleChange={() => props.handleInput(event)}
           handleClick={() => handleClick()}
@@ -102,7 +118,6 @@ const ShortContainer = (props) => {
           copyPopup ={copyPopup}
           customize ={customize}
           customizeHandler ={()=> customizeHandler()}
-
         />
         <span className="text-xl my-4">Your History</span>
         {historyLinks}

@@ -48,7 +48,6 @@ const ShortComponent = (props) => {
             : { visibility: "visible", animation: "grow 0.2s linear" }
         }
       >
-        
         <div className="flex flex-col md:flex-row justify-between border mb-1 border-purple-200 rounded pl-2 md:p-0 mt-3">
           <p className="md:self-center md:ml-2 text-sm text-gray-700 italic">
             {props.handleUrl}
@@ -64,8 +63,8 @@ const ShortComponent = (props) => {
               <input
                 type="text"
                 name="customurl"
-                autocomplete="off"
-                onChange ={props.handleChange}
+                autoComplete="off"
+                onChange={props.handleChange}
                 value={props.input.customurl}
                 className="bg-white border border-purple-300 opacity-75 rounded-md outline-none p-1 text-sm font-semibold text-black w-24"
               />
@@ -73,10 +72,10 @@ const ShortComponent = (props) => {
           ) : (
             <a
               className="md:self-center font-semibold text-blue-700"
-              href={`http://link0.ga/${props.input.shorturl}`}
+              href={`http://link0.ga/${props.shorturl}`}
               target="_blank"
             >
-              link0.ga/{props.input.shorturl}
+              link0.ga/{props.shorturl}
             </a>
           )}
           <div>
@@ -89,7 +88,11 @@ const ShortComponent = (props) => {
             <button
               className="w-32 text-purple-600 p-1 h-10  font-semibold rounded rounded-l-none"
               onClick={props.customizeHandler}
-              style={props.customize ? {animation:"zoom 2s linear infinite" }: {visibility:"inherit"}}
+              style={
+                props.customize
+                  ? { animation: "zoom 2s linear infinite" }
+                  : { visibility: "inherit" }
+              }
             >
               {props.customize ? "Save?" : "Customize"}
             </button>

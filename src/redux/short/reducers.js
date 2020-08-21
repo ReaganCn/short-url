@@ -1,4 +1,4 @@
-import { SUBMIT_URL, RECEIVE_SHORT } from "./types";
+import { SUBMIT_URL, RECEIVE_SHORT, POST_CUSTOM, RECEIVE_CUSTOM } from "./types";
 import { ON_CHANGE } from "../app/types";
 
 const defaultState = {
@@ -6,12 +6,23 @@ const defaultState = {
   url: "",
   shorturl: "",
   customurl: "",
+  custom: "",
   domain: "https://reagan-urlshort.glitch.me/shorturl/",
   isFetching: null,
+  fetchingCustom: false
 };
 
 const shorteningReducer = (state = defaultState, action) => {
   switch (action.type) {
+    case POST_CUSTOM:
+        return Object.assign({}, state, {
+          fetchingCustom: true
+        })
+    case RECEIVE_CUSTOM:
+        return Object.assign({}, state, {
+          custom: action.custom,
+          fetchingCustom: false
+        })
     case ON_CHANGE:
       if (action.name === "url") {
         return Object.assign({}, state, {
@@ -30,7 +41,8 @@ const shorteningReducer = (state = defaultState, action) => {
       });
     case RECEIVE_SHORT:
       return Object.assign({}, state, {
-        shorturl: action.shorturl,
+        linkid: action.url.id,
+        shorturl: action.url.short_url,
         isFetching: false,
       });
     default:
