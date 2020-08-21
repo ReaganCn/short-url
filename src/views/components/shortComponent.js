@@ -12,7 +12,7 @@ const ShortComponent = (props) => {
           name="url"
           id="original url"
           placeholder="Enter URL"
-          className="h-full border border-purple-400 border-t-0 border-r-0 border-l-0 outline-none p-1 w-10/12"
+          className="h-full border border-purple-400 border-t-0 border-r-0 border-l-0 outline-none p-1 w-10/12 text-sm bg-transparent appearance-none"
           onChange={props.handleChange}
           value={props.input.url}
         />
@@ -48,26 +48,50 @@ const ShortComponent = (props) => {
             : { visibility: "visible", animation: "grow 0.2s linear" }
         }
       >
+        
         <div className="flex flex-col md:flex-row justify-between border mb-1 border-purple-200 rounded pl-2 md:p-0 mt-3">
           <p className="md:self-center md:ml-2 text-sm text-gray-700 italic">
             {props.handleUrl}
           </p>
-          <a
-            className="md:self-center font-semibold text-blue-700"
-            href={`http://link0.ga/${props.input.shorturl}`}
-            target="_blank"
-          >
-            link0.ga/{props.input.shorturl}
-          </a>
+
+          {/* Customize link section */}
+          {props.customize ? (
+            <div
+              id="customize-box "
+              className="md:self-center font-semibold text-blue-700"
+            >
+              <span>link0.ga/</span>
+              <input
+                type="text"
+                name="customurl"
+                autocomplete="off"
+                onChange ={props.handleChange}
+                value={props.input.customurl}
+                className="bg-white border border-purple-300 opacity-75 rounded-md outline-none p-1 text-sm font-semibold text-black w-24"
+              />
+            </div>
+          ) : (
+            <a
+              className="md:self-center font-semibold text-blue-700"
+              href={`http://link0.ga/${props.input.shorturl}`}
+              target="_blank"
+            >
+              link0.ga/{props.input.shorturl}
+            </a>
+          )}
           <div>
             <button
               className="w-32 text-purple-600 p-1 h-10 my-0 outline-none font-semibold"
               onClick={props.copyUrl}
             >
-            { props.copyPopup ? "Copied!" : "Copy"}
+              {props.copyPopup ? "Copied!" : "Copy"}
             </button>
-            <button className="w-32 text-purple-600 p-1 h-10  font-semibold rounded rounded-l-none">
-              Customize
+            <button
+              className="w-32 text-purple-600 p-1 h-10  font-semibold rounded rounded-l-none"
+              onClick={props.customizeHandler}
+              style={props.customize ? {animation:"zoom 2s linear infinite" }: {visibility:"inherit"}}
+            >
+              {props.customize ? "Save?" : "Customize"}
             </button>
           </div>
         </div>

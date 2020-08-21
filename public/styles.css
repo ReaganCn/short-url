@@ -29,3 +29,12 @@ button {
     0%   {transform: scaleY(-0.2); transform-origin:center top;}
     100% {transform: scaleY(1);}
   }
+  @keyframes zoom {
+  
+    0%, 100% {
+      transform: scale(1.1)
+    }
+    50% {
+      transform: scale(1)
+    }
+  }

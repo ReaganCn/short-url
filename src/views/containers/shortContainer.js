@@ -39,7 +39,7 @@ const handleUrl = (url, limit) => {
 
 const ShortContainer = (props) => {
   const [copyPopup, setcopyPopup] = useState(false);
-
+  const [customize, setCustomize] = useState(false);
 
   useEffect(() => {
     if (props.app.user.length > 1) {
@@ -48,6 +48,7 @@ const ShortContainer = (props) => {
   }, [props.state.shorturl]);
 
   const handleShorten = (event) => {
+    setCustomize(false)
     const originalUrl = {
       url: props.state.url,
     };
@@ -65,6 +66,13 @@ const ShortContainer = (props) => {
     setTimeout(()=> {
         setcopyPopup(false);
     },3000)
+  }
+
+  const customizeHandler = () => {
+    customize ? setCustomize(false) : setCustomize(true);
+    if (customize){
+     //save the custom name to database
+    }
   }
 
   const historyLinks = props.app.previousLinks.slice(0, 5).map((item) => {
@@ -88,10 +96,13 @@ const ShortContainer = (props) => {
           onSubmit={() => handleShorten(event)}
           handleChange={() => props.handleInput(event)}
           handleClick={() => handleClick()}
-          handleUrl={handleUrl(props.state.url, 35)}
+          handleUrl={handleUrl(props.state.url, 30)}
           isFetching={props.state.isFetching}
           copyUrl = {()=> copyUrl()}
           copyPopup ={copyPopup}
+          customize ={customize}
+          customizeHandler ={()=> customizeHandler()}
+
         />
         <span className="text-xl my-4">Your History</span>
         {historyLinks}
