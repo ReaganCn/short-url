@@ -67,14 +67,21 @@ const ShortContainer = (props) => {
     document.getElementById("output").remove();
   };
 
-  const copyUrl = () => {
-    copy(`link0.ga/${evaluateShort()}`);
+  const handleCopyPopup =() => {
     setcopyPopup(true);
     setTimeout(()=> {
         setcopyPopup(false);
     },3000)
   }
+  const copyUrl = () => {
+    copy(`link0.ga/${evaluateShort()}`);
+    handleCopyPopup()
+  }
 
+  const copyHistoryLinks = (link) => {
+    copy(`link0.ga/${link}`);
+    handleCopyPopup();
+  }
   const customizeHandler = () => {
     customize ? setCustomize(false) : setCustomize(true);
     if (customize){
@@ -91,12 +98,15 @@ const ShortContainer = (props) => {
   }
 
   const historyLinks = props.app.previousLinks.slice(0, 5).map((item) => {
+    const getShort = custom => custom ? item.custom: item.shorturl;
     return (
       <HistoryComponent
         key={item._id}
         info={item}
-        shorturl = {item.custom ? item.custom : item.shorturl}
+        copyOldShort = {()=>copyHistoryLinks(getShort(item.custom))}
+        shorturl = {getShort(item.custom)}
         urlTrimmed={handleUrl(item.originalurl, 35)}
+        copyPopup ={copyPopup}
       />
     );
   });
