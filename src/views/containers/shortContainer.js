@@ -48,7 +48,7 @@ const ShortContainer = (props) => {
     if (props.app.user.length > 1) {
       props.getUserLinks(props.app.user);
     }
-  }, [props.state.shorturl]);
+  }, [props.state.shorturl, props.state.custom]);
 
   useEffect(() => {
     evaluateShort();
@@ -95,6 +95,7 @@ const ShortContainer = (props) => {
       <HistoryComponent
         key={item._id}
         info={item}
+        shorturl = {item.custom ? item.custom : item.shorturl}
         urlTrimmed={handleUrl(item.originalurl, 35)}
       />
     );

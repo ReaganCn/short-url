@@ -9,7 +9,7 @@ const HistoryComponent = (props) => {
     <div
       id="history-component"
       className="w-11/12 border border-gray-400 px-3 pt-2 shadow-lg rounded text-white bg-purple-700 mx-auto"
-    >
+    > 
       <div className="flex flex-row justify-between self-start mb-3 font-semibold">
         <small className="text-purple-200">AUG 12</small>
 
@@ -18,7 +18,7 @@ const HistoryComponent = (props) => {
 
       <div className="flex flex-row justify-between mb-2 self-end">
       <p className="font-semibold text-md self-end">
-          link0.ga/{props.info.shorturl}
+          link0.ga/{props.shorturl}
         </p>
         <a href="#" className="text-xs self-end">
           {props.urlTrimmed}
