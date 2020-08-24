@@ -11,9 +11,9 @@ const HistoryComponent = (props) => {
       className="w-11/12 border border-gray-400 px-3 pt-2 shadow-lg rounded text-white bg-purple-700 mx-auto"
     > 
       <div className="flex flex-row justify-between self-start mb-3 font-semibold">
-        <small className="text-purple-200">AUG 12</small>
+        <small className="text-purple-200">{props.date}</small>
 
-        <small className="text-purple-200">Expiry: 29 days</small>
+  <small className="text-purple-200">Expiry: {props.expiry} days</small>
       </div>
 
       <div className="flex flex-row justify-between mb-2 self-end">

@@ -33,12 +33,20 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+//helper functions
+
 const handleUrl = (url, limit) => {
   if (url.length > limit) {
     return url.slice(0, limit) + "...";
   }
   return url;
 };
+
+const formatDate = (date) => {
+const newDate = new Date(date);
+const months = ["JAN","FEB","MAR", "APR", "MAY", "JUNE", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+return months[newDate.getMonth()]+" "+ newDate.getDate();
+}
 
 
 // React
@@ -47,6 +55,7 @@ const ShortContainer = (props) => {
   const [copyPopup, setcopyPopup] = useState(false);
   const [customize, setCustomize] = useState(false);
 
+  //console.log(formatDate("2020-08-22T12:36:24.439Z"))
   useEffect(() => {
     if (props.app.user.length > 1) {
       props.getUserLinks(props.app.user);
@@ -110,10 +119,12 @@ const ShortContainer = (props) => {
       <HistoryComponent
         key={item._id}
         info={item}
+        date = {formatDate(item.dateCreated)}
         copyOldShort = {()=>copyHistoryLinks(getShort(item.custom), item._id)}
         shorturl = {getShort(item.custom)}
         urlTrimmed={handleUrl(item.originalurl, 35)}
         copyPopup ={copyPopup}
+        expiry = {Math.round(item.expiresIn)}
       />
     );
   });
