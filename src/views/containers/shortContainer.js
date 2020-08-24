@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import ShortComponent from "../components/ShortComponent";
 import { getShortUrl, customizeLink } from "../../redux/short/actions";
-import { handleChange, getLinks } from "../../redux/app/actions";
+import { handleChange, getLinks, updateCopyLinks } from "../../redux/app/actions";
 import HistoryComponent from "../components/HistoryComponent";
 import copy from "copy-to-clipboard"
 
@@ -26,6 +26,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getCustomLink: (id, url, username) => {
       dispatch(customizeLink(id, url, username));
+    },
+    updateHistoryCopy: (id) => {
+      dispatch(updateCopyLinks(id));
     }
   };
 };
@@ -75,12 +78,15 @@ const ShortContainer = (props) => {
   }
   const copyUrl = () => {
     copy(`link0.ga/${evaluateShort()}`);
-    handleCopyPopup()
   }
 
-  const copyHistoryLinks = (link) => {
+  const copyHistoryLinks = (link, id) => {
     copy(`link0.ga/${link}`);
-    handleCopyPopup();
+    props.updateHistoryCopy(id);
+    setTimeout(()=> {
+      console.log("here")
+      props.updateHistoryCopy(id);
+    },3000)
   }
   const customizeHandler = () => {
     customize ? setCustomize(false) : setCustomize(true);
@@ -98,12 +104,12 @@ const ShortContainer = (props) => {
   }
 
   const historyLinks = props.app.previousLinks.slice(0, 5).map((item) => {
-    const getShort = custom => custom ? item.custom: item.shorturl;
+    const getShort = custom => custom ? item.custom : item.shorturl;
     return (
       <HistoryComponent
         key={item._id}
         info={item}
-        copyOldShort = {()=>copyHistoryLinks(getShort(item.custom))}
+        copyOldShort = {()=>copyHistoryLinks(getShort(item.custom), item._id)}
         shorturl = {getShort(item.custom)}
         urlTrimmed={handleUrl(item.originalurl, 35)}
         copyPopup ={copyPopup}

@@ -1,4 +1,11 @@
-import { LOGIN, LOGOUT, REQUEST_USER_LINKS, RECEIVE_USER_LINKS } from "./types";
+import {
+  LOGIN,
+  LOGOUT,
+  REQUEST_USER_LINKS,
+  RECEIVE_USER_LINKS,
+  UPDATE_COPY,
+  DEFAULT,
+} from "./types";
 
 const defaultState = {
   isLoggedin: false,
@@ -23,9 +30,23 @@ const appReducer = (state = defaultState, action) => {
         isFetching: true,
       });
     case RECEIVE_USER_LINKS:
+      const newData = action.data.map((item) => {
+        item.copy = false;
+        return item;
+      });
       return Object.assign({}, state, {
         isFetching: false,
-        previousLinks: action.data
+        previousLinks: newData,
+      });
+    case UPDATE_COPY:
+      const newLinks = state.previousLinks.map((item) => {
+        if (item._id === action.id) {
+          item.copied ? item.copied = false : item.copied = true
+        }
+        return item;
+      });
+      return Object.assign({}, state, {
+        previousLinks: newLinks,
       });
     default:
       return state;

@@ -25,7 +25,7 @@ const HistoryComponent = (props) => {
         </a>
 
         <button onClick={props.copyOldShort} className="border border-purple-700 font-bold my-0 self-end p-1 rounded-full text-xs px-3 bg-white text-purple-600 hover:text-white hover:bg-purple-600">
-        Copy
+        {props.info.copied ? "Copied!" : "Copy"}
         </button>
       </div>
     </div>

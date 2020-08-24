@@ -6,6 +6,8 @@ import {
   RECEIVE_USER_INFO,
   REQUEST_USER_LINKS,
   RECEIVE_USER_LINKS,
+  UPDATE_COPY,
+  DEFAULT,
 } from "./types";
 
 const handleChange = (event) => {
@@ -43,6 +45,13 @@ const receiveLinks = (data) => {
   };
 };
 
+const updateCopyLinks  = (id) => {
+  return {
+    type: UPDATE_COPY,
+    id
+  }
+}
+
 const loginAction = (user) => {
   return {
     type: LOGIN,
@@ -66,4 +75,4 @@ const getLinks = (username) => {
   };
 };
 
-export { handleChange, loginAction, logoutAction, getLinks };
+export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks };
