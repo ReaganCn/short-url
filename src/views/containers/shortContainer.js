@@ -78,6 +78,7 @@ const ShortContainer = (props) => {
   }
   const copyUrl = () => {
     copy(`link0.ga/${evaluateShort()}`);
+    handleCopyPopup();
   }
 
   const copyHistoryLinks = (link, id) => {
