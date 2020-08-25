@@ -132,8 +132,8 @@ const ShortContainer = (props) => {
   return (
     <Fragment>
       <div
-        className="w-7/12 flex flex-col mt-16 border rounded p-12 mx-auto shadow-2xl"
-        id="short-component"
+        className="w-7/12 flex flex-col border rounded p-12 mx-auto shadow-2xl mt-64"
+        id="short-component" 
       >
         <ShortComponent
           input={props.state}
