@@ -11,13 +11,13 @@ const ShortComponent = (props) => {
           type="text"
           name="url"
           id="original url"
-          placeholder="Enter URL"
-          className="h-full border border-purple-400 border-t-0 border-r-0 border-l-0 outline-none p-1 w-10/12 text-sm bg-transparent appearance-none"
+          placeholder="Shorten your link..."
+          className="h-full border border-purple-400 border-t-0 border-r-0 border-l-0 outline-none p-1 w-10/12 text-sm bg-white appearance-none pl-2"
           onChange={props.handleChange}
           value={props.input.url}
         />
         <button
-          className=" h-full border bg-purple-700 w-2/12 text-white p-1 rounded"
+          className=" h-full border bg-purple-700 w-2/12 text-white p-1 rounded border-transparent ml-5"
           type="submit"
           // onClick={props.handleClick}
         >
@@ -40,7 +40,7 @@ const ShortComponent = (props) => {
         </button>
       </form>
       <div
-        className="flex-row self-start"
+        className="flex-row self-start mt-12"
         id="output"
         style={
           props.input.shorturl === ""
@@ -57,7 +57,7 @@ const ShortComponent = (props) => {
           {props.customize ? (
             <div
               id="customize-box "
-              className="md:self-center font-semibold text-blue-700"
+              className="md:self-center font-semibold text-blue-700 "
             >
               <span>link0.ga/</span>
               <input
