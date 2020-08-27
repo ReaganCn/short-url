@@ -17,7 +17,7 @@ const ShortComponent = (props) => {
           value={props.input.url}
         />
         <button
-          className=" h-full border bg-purple-700 w-2/12 text-white p-1 rounded border-transparent ml-5"
+          className=" h-full border w-2/12 text-white p-1 rounded border-transparent ml-5 bg-darkviolet"
           type="submit"
           // onClick={props.handleClick}
         >
@@ -25,6 +25,7 @@ const ShortComponent = (props) => {
             style={
               props.isFetching ? { display: "none" } : { display: "block" }
             }
+          className="font-opensans  tracking-wide"
           >
             Create
           </span>

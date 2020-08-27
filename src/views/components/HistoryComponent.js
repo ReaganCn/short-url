@@ -8,7 +8,7 @@ const HistoryComponent = (props) => {
     // >
     <div
       id="history-component"
-      className="w-11/12 border border-gray-400 px-3 pt-2 shadow-lg rounded text-white bg-purple-700 mx-auto"
+      className="w-11/12 border border-gray-400 px-3 pt-2 shadow-lg rounded text-white mx-auto bg-darkviolet"
     > 
       <div className="flex flex-row justify-between self-start mb-3 font-semibold">
         <small className="text-purple-200">{props.date}</small>
@@ -24,7 +24,7 @@ const HistoryComponent = (props) => {
           {props.urlTrimmed}
         </a>
 
-        <button onClick={props.copyOldShort} className="border border-purple-700 font-bold my-0 self-end p-1 rounded-full text-xs px-3 bg-white text-purple-600 hover:text-white hover:bg-purple-600">
+        <button onClick={props.copyOldShort} className="border font-bold my-0 self-end p-1 rounded-full text-xs px-3 bg-white text-purple-600 border-darkviolet hover:text-white hover:bg-darkviolet hover:border-white">
         {props.info.copied ? "Copied!" : "Copy"}
         </button>
       </div>

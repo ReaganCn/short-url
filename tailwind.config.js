@@ -3,6 +3,8 @@ module.exports = {
   theme: {
     fontFamily: {
       'opensans': ['Open Sans'],
+      'comicsans': ['Comic Sans MS'],
+      'dupuy': ['Dupuy']
           },
     extend: {
       keyframes: {
@@ -13,6 +15,9 @@ module.exports = {
       },
       animation: {
         fadein: 'fadein 3s ease-in-out'
+      },
+      colors: {
+        darkviolet: "#780fb8"
       }
     }
   },

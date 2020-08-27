@@ -19,8 +19,6 @@ const App = (props) => {
   return (
     <Fragment>
       {props.state.isLoggedin ? <HomeConnected /> : <SignInConnected />}
-      
-      
     </Fragment>
   );
 };
