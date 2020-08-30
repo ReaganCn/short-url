@@ -13,7 +13,7 @@ const HistoryComponent = (props) => {
       <div className="flex flex-row justify-between self-start mb-3 font-semibold">
         <small className="text-purple-200">{props.date}</small>
 
-  <small className="text-purple-200">Expiry: {props.expiry} days</small>
+  <small className="text-purple-200">Expiry: {props.expiry  > 0 ? "expired" : props.expiry+" days"}</small>
       </div>
 
       <div className="flex flex-row justify-between mb-2 self-end">
