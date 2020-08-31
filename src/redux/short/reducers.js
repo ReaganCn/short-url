@@ -20,6 +20,7 @@ const shorteningReducer = (state = defaultState, action) => {
         })
     case RECEIVE_CUSTOM:
         return Object.assign({}, state, {
+          previousCustom: state.custom,
           custom: action.custom,
           fetchingCustom: false
         })
@@ -28,6 +29,7 @@ const shorteningReducer = (state = defaultState, action) => {
         return Object.assign({}, state, {
           [action.name]: action.value,
           shorturl: "",
+          custom: ""
         });
       } else {
         return Object.assign({}, state, {
@@ -42,6 +44,7 @@ const shorteningReducer = (state = defaultState, action) => {
     case RECEIVE_SHORT:
       return Object.assign({}, state, {
         linkid: action.url.id,
+        previousShort: state.shorturl,
         shorturl: action.url.short_url,
         isFetching: false,
       });
