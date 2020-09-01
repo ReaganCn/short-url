@@ -45,7 +45,7 @@ const ShortComponent = (props) => {
         id="output"
         style={
           props.input.shorturl === ""
-            ? { visibility: "collapse" }
+            ? { visibility: "collapse", position: "absolute" }
             : { visibility: "visible", animation: "grow 0.2s linear" }
         }
       >

@@ -2,9 +2,13 @@ import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import ShortComponent from "../components/ShortComponent";
 import { getShortUrl, customizeLink } from "../../redux/short/actions";
-import { handleChange, getLinks, updateCopyLinks } from "../../redux/app/actions";
+import {
+  handleChange,
+  getLinks,
+  updateCopyLinks,
+} from "../../redux/app/actions";
 import HistoryComponent from "../components/HistoryComponent";
-import copy from "copy-to-clipboard"
+import copy from "copy-to-clipboard";
 
 const mapStateToProps = ({ shorten, app }) => {
   return {
@@ -29,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateHistoryCopy: (id) => {
       dispatch(updateCopyLinks(id));
-    }
+    },
   };
 };
 
@@ -43,11 +47,23 @@ const handleUrl = (url, limit) => {
 };
 
 const formatDate = (date) => {
-const newDate = new Date(date);
-const months = ["JAN","FEB","MAR", "APR", "MAY", "JUNE", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-return months[newDate.getMonth()]+" "+ newDate.getDate();
-}
-
+  const newDate = new Date(date);
+  const months = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUNE",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+  return months[newDate.getMonth()] + " " + newDate.getDate();
+};
 
 // React
 
@@ -64,10 +80,10 @@ const ShortContainer = (props) => {
 
   useEffect(() => {
     evaluateShort();
-  }, [props.state.custom])
+  }, [props.state.custom]);
 
   const handleShorten = (event) => {
-    setCustomize(false)
+    setCustomize(false);
     const originalUrl = {
       url: props.state.url,
     };
@@ -79,52 +95,56 @@ const ShortContainer = (props) => {
     document.getElementById("output").remove();
   };
 
-  const handleCopyPopup =() => {
+  const handleCopyPopup = () => {
     setcopyPopup(true);
-    setTimeout(()=> {
-        setcopyPopup(false);
-    },3000)
-  }
+    setTimeout(() => {
+      setcopyPopup(false);
+    }, 3000);
+  };
   const copyUrl = () => {
     copy(`link0.ga/${evaluateShort()}`);
     handleCopyPopup();
-  }
+  };
 
   const copyHistoryLinks = (link, id) => {
     copy(`link0.ga/${link}`);
     props.updateHistoryCopy(id);
-    setTimeout(()=> {
-      console.log("here")
+    setTimeout(() => {
+      console.log("here");
       props.updateHistoryCopy(id);
-    },3000)
-  }
+    }, 3000);
+  };
   const customizeHandler = () => {
     customize ? setCustomize(false) : setCustomize(true);
-    if (customize){
-     //save the custom name to database
-     props.getCustomLink(props.state.linkid,props.state.customurl, props.app.user);
+    if (customize) {
+      //save the custom name to database
+      props.getCustomLink(
+        props.state.linkid,
+        props.state.customurl,
+        props.app.user
+      );
     }
-  }
+  };
 
   const evaluateShort = () => {
-    if(props.state.custom === ""){
+    if (props.state.custom === "") {
       return props.state.shorturl;
     }
-    return props.state.custom
-  }
+    return props.state.custom;
+  };
 
   const historyLinks = props.app.previousLinks.slice(0, 5).map((item) => {
-    const getShort = custom => custom ? item.custom : item.shorturl;
+    const getShort = (custom) => (custom ? item.custom : item.shorturl);
     return (
       <HistoryComponent
         key={item._id}
         info={item}
-        date = {formatDate(item.dateCreated)}
-        copyOldShort = {()=>copyHistoryLinks(getShort(item.custom), item._id)}
-        shorturl = {getShort(item.custom)}
+        date={formatDate(item.dateCreated)}
+        copyOldShort={() => copyHistoryLinks(getShort(item.custom), item._id)}
+        shorturl={getShort(item.custom)}
         urlTrimmed={handleUrl(item.originalurl, 35)}
-        copyPopup ={copyPopup}
-        expiry = {Math.round(item.expiresIn)}
+        copyPopup={copyPopup}
+        expiry={Math.round(item.expiresIn)}
       />
     );
   });
@@ -133,22 +153,38 @@ const ShortContainer = (props) => {
     <Fragment>
       <div
         className="w-10/12 flex flex-col border rounded p-12 mx-auto shadow-2xl mt-8 border-transparent xl:mt-0"
-        id="short-component" 
+        id="short-component"
       >
         <ShortComponent
           input={props.state}
-          shorturl = {evaluateShort()}
+          shorturl={evaluateShort()}
           onSubmit={() => handleShorten(event)}
           handleChange={() => props.handleInput(event)}
           handleClick={() => handleClick()}
           handleUrl={handleUrl(props.state.url, 30)}
           isFetching={props.state.isFetching}
-          copyUrl = {()=> copyUrl()}
-          copyPopup ={copyPopup}
-          customize ={customize}
-          customizeHandler ={()=> customizeHandler()}
+          copyUrl={() => copyUrl()}
+          copyPopup={copyPopup}
+          customize={customize}
+          customizeHandler={() => customizeHandler()}
         />
-        <span className="text-xl my-4">Your History</span>
+        <button id="history" className="px-10 md:w-3/12 xl:w-2/12 bg-black border-transparent text-white mx-auto h-12 flex justify-around mt-20 hover:bg-darkviolet md:mt-16 lg:mt-12">
+          <span className="self-center font-opensans tracking-wide">History</span>&nbsp;&nbsp;&nbsp;
+          <span className="self-center text-darkviolet arrow">
+          <svg
+            class="animate-bounce w-5 h-5 font-bold"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+           <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+          </span>
+        </button>
+        {/* <span className="text-xl my-4">Your History</span> */}
         {historyLinks}
       </div>
     </Fragment>

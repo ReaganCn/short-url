@@ -62,3 +62,7 @@ button {
       transform: scale(1)
     }
   }
+
+  #history:hover .arrow{
+    color: white;
+  }

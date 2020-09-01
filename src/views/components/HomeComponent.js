@@ -26,7 +26,7 @@ const HomeComponent = (props) => {
       </div>
 
       <div className="text-center">
-        <span className="font-opensans text-white text-2xl font-semibold">
+        <span className="font-opensans text-white md:text-2xl font-semibold text-lg">
           Get short and customized links in an instant
         </span>
       </div>
