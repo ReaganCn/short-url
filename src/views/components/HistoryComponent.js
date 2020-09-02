@@ -9,6 +9,7 @@ const HistoryComponent = (props) => {
     <div
       id="history-component"
       className="w-11/12 border border-gray-400 px-3 pt-2 shadow-lg rounded text-white mx-auto bg-darkviolet"
+     // style={props.showHistory? {display: "block", animation: "grow 1s linear"}:{display: "none"}}
     > 
       <div className="flex flex-row justify-between self-start mb-3 font-semibold">
         <small className="text-purple-200">{props.date}</small>
