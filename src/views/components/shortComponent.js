@@ -68,12 +68,12 @@ const ShortComponent = (props) => {
                 autoComplete="off"
                 onChange={props.handleChange}
                 value={props.input.customurl}
-                className="bg-white border border-purple-300 opacity-75 rounded outline-none p-1 text-sm font-semibold text-black w-24"
+                className="bg-white border border-purple-300 opacity-75 rounded outline-none p-1 font-semibold text-black w-24"
               />
             </div>
           ) : (
             <a
-              className="md:self-center font-semibold text-blue-700 hover:underline"
+              className="md:self-center font-semibold text-blue-700 hover:underline text-lg"
               href={`http://link0.ga/${props.shorturl}`}
               target="_blank"
             >
@@ -82,13 +82,13 @@ const ShortComponent = (props) => {
           )}
           <div>
             <button
-              className="w-32 text-purple-600 p-1 h-10 my-0 outline-none font-semibold"
+              className="w-32 text-purple-600 p-1 h-10 my-0 outline-none font-semibold hover:text-purple-900"
               onClick={props.copyUrl}
             >
               {props.copyPopup ? "Copied!" : <span><i className="fa fa-files-o"></i> Copy</span>}
             </button>
             <button
-              className="w-32 text-purple-600 p-1 h-10  font-semibold rounded rounded-l-none"
+              className="w-32 text-purple-600 p-1 h-10  font-semibold rounded rounded-l-none hover:text-purple-900"
               onClick={props.customizeHandler}
  
             >
