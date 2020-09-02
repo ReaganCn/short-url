@@ -17,7 +17,7 @@ const ShortComponent = (props) => {
           value={props.input.url}
         />
         <button
-          className=" h-full border w-2/12 text-white p-1 rounded border-transparent ml-5 bg-darkviolet"
+          className=" h-full border w-2/12 text-white p-1 rounded border-transparent ml-5 bg-darkviolet hover:bg-black hover:border-darkviolet"
           type="submit"
           // onClick={props.handleClick}
         >
@@ -27,7 +27,7 @@ const ShortComponent = (props) => {
             }
           className="font-opensans  tracking-wide"
           >
-            Create
+           Create
           </span>
 
           <img
@@ -49,8 +49,9 @@ const ShortComponent = (props) => {
             : { visibility: "visible", animation: "grow 0.2s linear" }
         }
       >
-        <div className="flex flex-col md:flex-row justify-between border mb-1 border-purple-200 rounded pl-2 md:p-0 mt-3">
-          <p className="md:self-center md:ml-2 text-sm text-gray-700 italic">
+        <div className="flex flex-col md:flex-row justify-between border mb-1 border-purple-200 pl-2 md:p-0 mt-3 border-r-0 border-l-0 py-3">
+          <p className="md:self-center md:ml-2 text-sm text-gray-900 font-semibold">
+            <i className="fa fa-globe pr-2 text-purple-600"></i>
             {props.handleUrl}
           </p>
 
@@ -67,12 +68,12 @@ const ShortComponent = (props) => {
                 autoComplete="off"
                 onChange={props.handleChange}
                 value={props.input.customurl}
-                className="bg-white border border-purple-300 opacity-75 rounded-md outline-none p-1 text-sm font-semibold text-black w-24"
+                className="bg-white border border-purple-300 opacity-75 rounded outline-none p-1 text-sm font-semibold text-black w-24"
               />
             </div>
           ) : (
             <a
-              className="md:self-center font-semibold text-blue-700"
+              className="md:self-center font-semibold text-blue-700 hover:underline"
               href={`http://link0.ga/${props.shorturl}`}
               target="_blank"
             >
@@ -84,18 +85,14 @@ const ShortComponent = (props) => {
               className="w-32 text-purple-600 p-1 h-10 my-0 outline-none font-semibold"
               onClick={props.copyUrl}
             >
-              {props.copyPopup ? "Copied!" : "Copy"}
+              {props.copyPopup ? "Copied!" : <span><i className="fa fa-files-o"></i> Copy</span>}
             </button>
             <button
               className="w-32 text-purple-600 p-1 h-10  font-semibold rounded rounded-l-none"
               onClick={props.customizeHandler}
-              style={
-                props.customize
-                  ? { animation: "zoom 2s linear infinite" }
-                  : { visibility: "inherit" }
-              }
+ 
             >
-              {props.customize ? "Save?" : "Customize"}
+              {props.customize ? <span className="font-bold tracking-wide"><i className="fa fa-floppy-o"></i>  Save?</span> : <span><i className="fa fa-pencil"></i>  Customize</span>}
             </button>
           </div>
         </div>

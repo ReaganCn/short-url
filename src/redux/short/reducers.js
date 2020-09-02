@@ -31,7 +31,12 @@ const shorteningReducer = (state = defaultState, action) => {
           shorturl: "",
           custom: ""
         });
-      } else {
+      } else if(action.name === "customurl"){
+        return Object.assign({}, state, {
+          customurl: action.value.split(" ").join("")
+      })
+      } 
+      else {
         return Object.assign({}, state, {
           [action.name]: action.value,
         });
