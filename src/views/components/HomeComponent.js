@@ -16,7 +16,7 @@ const HomeComponent = (props) => {
         </span>
       </div>
       <div id="logo" className="w-4/12 mx-auto flex items-end">
-        <img src="public/imgs/logo3.png" className="inline-block" />
+        <img src="public/imgs/logo3.png" className="inline-block xl:max-w-lg"/>
         <img
           id="logo-dot"
           src="public/imgs/logo-dot-white.png"
