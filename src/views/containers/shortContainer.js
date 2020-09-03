@@ -157,7 +157,7 @@ const ShortContainer = (props) => {
   return (
     <Fragment>
       <div
-        className="w-10/12 flex flex-col border rounded p-12 mx-auto mt-8 border-transparent xl:mt-0"
+        className="w-full md:w-10/12 flex flex-col border rounded p-12 mx-auto mt-8 border-transparent xl:mt-0"
         id="short-component"
       >
         <ShortComponent
@@ -176,7 +176,7 @@ const ShortContainer = (props) => {
         <button
           id="history"
           onClick = {() => historyButton()}
-          className="px-10 md:w-3/12 xl:w-2/12 bg-black border-transparent text-white mx-auto h-12 flex justify-around mt-20 hover:bg-darkviolet md:mt-16 lg:mt-12 mb-8"
+          className="px-10 md:w-3/12 xl:w-2/12 bg-black border border-darkviolet text-white mx-auto h-12 flex justify-around mt-20 hover:bg-darkviolet md:mt-16 lg:mt-12 mb-8"
         >
           <span className="self-center font-opensans tracking-wide">
             History

@@ -8,26 +8,36 @@ const HistoryComponent = (props) => {
     // >
     <div
       id="history-component"
-      className="w-11/12 border border-gray-400 px-3 pt-2 shadow-lg rounded text-white mx-auto bg-darkviolet"
+      className="w-full md:w-8/12 border px-3 pt-2 text-white mx-auto bg-darkviolet mb-0 border-t-0 border-l-0 border-r-0 border-black"
      // style={props.showHistory? {display: "block", animation: "grow 1s linear"}:{display: "none"}}
     > 
-      <div className="flex flex-row justify-between self-start mb-3 font-semibold">
-        <small className="text-purple-200">{props.date}</small>
 
-  <small className="text-purple-200">Expiry: {props.expiry  < 0 ? "expired" : props.expiry+" days"}</small>
+<div className="flex flex-row justify-between self-start my-3 font-semibold ">
+<small className="text-purple-200 font-bold"><i className="fa fa-calendar"></i> &nbsp;&nbsp;{props.date}</small>
+
+<small className="text-purple-200 text-xs"> Expiry: {props.expiry  < 0 ? "expired" : props.expiry+" days"}</small>
+   </div>
+      <div className="flex flex-row justify-between self-start my-3 font-semibold ">
+
+      
+      <p className="font-semibold text-md">
+          link0.ga/{props.shorturl}
+        </p>
+
+        <button onClick={props.copyOldShort} className="border font-bold my-0 p-1 rounded-full text-xs px-3 bg-white text-purple-600 border-darkviolet hover:text-white hover:bg-darkviolet hover:border-white md:px-6">
+        {props.info.copied ? "Copied!" : "Copy"}
+        </button>
+
+        
       </div>
 
       <div className="flex flex-row justify-between mb-2 self-end">
-      <p className="font-semibold text-md self-end">
-          link0.ga/{props.shorturl}
-        </p>
-        <a href="#" className="text-xs self-end">
+      <a href="#" className="text-xs text-purple-200">
           {props.urlTrimmed}
         </a>
+        
 
-        <button onClick={props.copyOldShort} className="border font-bold my-0 self-end p-1 rounded-full text-xs px-3 bg-white text-purple-600 border-darkviolet hover:text-white hover:bg-darkviolet hover:border-white">
-        {props.info.copied ? "Copied!" : "Copy"}
-        </button>
+        
       </div>
     </div>
     // </div>

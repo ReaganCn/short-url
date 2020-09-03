@@ -23,7 +23,7 @@ const HomeContainer = (props) => {
     <Fragment>
       <div style={{backgroundImage: "url('public/imgs/HeaderImage.png')", backgroundRepeat: "no-repeat"}} className="">
       <HomeComponent />
-      <div className="flex">
+      <div className="flex" style={{backgroundColor: "black"}}>
       <ShortConnected />
       </div>
       </div>
