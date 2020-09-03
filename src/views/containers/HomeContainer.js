@@ -3,29 +3,28 @@ import { connect } from "react-redux";
 import ShortConnected from "./ShortContainer";
 import HomeComponent from "../components/HomeComponent";
 
-
-const mapStateToProps = ({  }) => {
-  return {
-
-  };
+const mapStateToProps = ({}) => {
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-   
-  };
+  return {};
 };
 
 const HomeContainer = (props) => {
-
-
   return (
     <Fragment>
-      <div style={{backgroundImage: "url('public/imgs/HeaderImage.png')", backgroundRepeat: "no-repeat"}} className="">
-      <HomeComponent />
-      <div className="flex" style={{backgroundColor: "black"}}>
-      <ShortConnected />
-      </div>
+      <div
+        style={{
+          backgroundImage: "url('public/imgs/HeaderImage.png')",
+          backgroundRepeat: "no-repeat",
+        }}
+        className=""
+      >
+        <HomeComponent />
+        <div className="flex">
+          <ShortConnected />
+        </div>
       </div>
     </Fragment>
   );

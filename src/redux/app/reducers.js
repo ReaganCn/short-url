@@ -8,8 +8,8 @@ import {
 } from "./types";
 
 const defaultState = {
-  isLoggedin: true,
-  user: "reagan20",
+  isLoggedin: false,
+  user: "",
   previousLinks: [],
   isFetching: null,
 };

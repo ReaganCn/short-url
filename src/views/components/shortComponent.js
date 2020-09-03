@@ -17,7 +17,7 @@ const ShortComponent = (props) => {
           value={props.input.url}
         />
         <button
-          className=" h-full border w-2/12 text-white p-1 rounded border-transparent ml-5 bg-darkviolet hover:bg-black hover:border-darkviolet"
+          className="text-sm md:text-base h-full border w-3/12 md:w-2/12 text-white p-1 rounded border-transparent ml-5 bg-darkviolet hover:bg-black hover:border-darkviolet"
           type="submit"
           // onClick={props.handleClick}
         >
@@ -50,8 +50,8 @@ const ShortComponent = (props) => {
         }
       >
         <div className="flex flex-col md:flex-row justify-between border mb-1 border-purple-200 pl-2 md:p-0 mt-3 border-r-0 border-l-0 py-3">
-          <p className="md:self-center md:ml-2 text-sm text-gray-900 font-semibold">
-            <i className="fa fa-globe pr-2 text-purple-600"></i>
+          <p className="md:self-center md:ml-2 text-sm text-white font-semibold">
+            <i className="fa fa-globe pr-2 text-purple-400"></i>
             {props.handleUrl}
           </p>
 
@@ -73,7 +73,7 @@ const ShortComponent = (props) => {
             </div>
           ) : (
             <a
-              className="md:self-center font-semibold text-blue-700 hover:underline text-lg"
+              className="md:self-center font-semibold text-blue-300 hover:underline text-lg"
               href={`http://link0.ga/${props.shorturl}`}
               target="_blank"
             >
@@ -82,13 +82,13 @@ const ShortComponent = (props) => {
           )}
           <div>
             <button
-              className="w-32 text-purple-600 p-1 h-10 my-0 outline-none font-semibold hover:text-purple-900"
+              className="w-32 text-purple-400 p-1 h-10 my-0 outline-none font-semibold hover:text-purple-200"
               onClick={props.copyUrl}
             >
               {props.copyPopup ? "Copied!" : <span><i className="fa fa-files-o"></i> Copy</span>}
             </button>
             <button
-              className="w-32 text-purple-600 p-1 h-10  font-semibold rounded rounded-l-none hover:text-purple-900"
+              className="w-32 text-purple-400 p-1 h-10  font-semibold rounded rounded-l-none hover:text-purple-200"
               onClick={props.customizeHandler}
  
             >
