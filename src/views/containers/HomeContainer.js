@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import ShortConnected from "./ShortContainer";
 import HomeComponent from "../components/HomeComponent";
+import HistoryConnected from "./HistoryContainer";
 
 const mapStateToProps = ({ app }) => {
   return {
@@ -30,15 +31,19 @@ const HomeContainer = (props) => {
     <Fragment>
       <div
         style={{
-          backgroundImage: "url('public/imgs/HeaderImage.png')",
+          backgroundImage: "url('public/imgs/HeaderImageBlack.png')",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "black",
+          height: "100vh"
         }}
         className=""
       >
         <HomeComponent info={props.app}  greeting ={greetingsHandler()}/>
-        <div className="flex">
-          <ShortConnected />
+        <ShortConnected />
+        <div className="flex flex-col bg-black mx-auto">
+        <HistoryConnected />
         </div>
+        
       </div>
     </Fragment>
   );

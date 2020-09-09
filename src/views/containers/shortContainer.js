@@ -76,11 +76,6 @@ const ShortContainer = (props) => {
   const [showHistory, setShowHistory] = useState(false);
 
   //console.log(formatDate("2020-08-22T12:36:24.439Z"))
-  useEffect(() => {
-    if (props.app.user.length > 1) {
-      props.getUserLinks(props.app.user);
-    }
-  }, [props.state.shorturl, props.state.custom]);
 
   useEffect(() => {
     evaluateShort();
@@ -109,15 +104,6 @@ const ShortContainer = (props) => {
     copy(`link0.ga/${evaluateShort()}`);
     handleCopyPopup();
   };
-
-  const copyHistoryLinks = (link, id) => {
-    copy(`link0.ga/${link}`);
-    props.updateHistoryCopy(id);
-    setTimeout(() => {
-      console.log("here");
-      props.updateHistoryCopy(id);
-    }, 3000);
-  };
   const customizeHandler = () => {
     customize ? setCustomize(false) : setCustomize(true);
     if (customize) {
@@ -137,30 +123,11 @@ const ShortContainer = (props) => {
     return props.state.custom;
   };
 
-  const historyButton = () => {
-    showHistory ? setShowHistory(false) : setShowHistory(true);
-  };
-
-  const historyLinks = props.app.previousLinks.slice(0, 5).map((item) => {
-    const getShort = (custom) => (custom ? item.custom : item.shorturl);
-    return (
-      <HistoryComponent
-        key={item._id}
-        info={item}
-        date={formatDate(item.dateCreated)}
-        copyOldShort={() => copyHistoryLinks(getShort(item.custom), item._id)}
-        shorturl={getShort(item.custom)}
-        urlTrimmed={handleUrl(item.originalurl, 35)}
-        copyPopup={copyPopup}
-        expiry={Math.round(item.expiresIn)}
-      />
-    );
-  });
 
   return (
     <Fragment>
       <div
-        className="w-full md:w-10/12 flex flex-col border rounded p-12 mx-auto mt-8 border-transparent xl:mt-0"
+        className="w-full md:w-10/12 flex flex-col border rounded p-12 mx-auto mt-8 border-transparent xl:mt-5"
         id="short-component"
       >
         <ShortComponent
@@ -176,36 +143,6 @@ const ShortContainer = (props) => {
           customize={customize}
           customizeHandler={() => customizeHandler()}
         />
-        <button
-          id="history"
-          onClick = {() => historyButton()}
-          className="px-10 md:w-3/12 xl:w-2/12 bg-black border border-darkviolet text-white mx-auto h-12 flex justify-around mt-20 hover:bg-darkviolet md:mt-16 lg:mt-12 mb-8"
-        >
-          <span className="self-center font-opensans tracking-wide">
-            History
-          </span>
-          &nbsp;&nbsp;&nbsp;
-          <span className="self-center text-darkviolet arrow">
-            <svg
-              className={`w-5 h-5 font-bold ${showHistory ? "" : "animate-bounce"}`}
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="3"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </span>
-        </button>
-        {/* <span className="text-xl my-4">Your History</span> */}
-        <div 
-        id="historyWrapper"
-        style={showHistory? {display: "block", animation: "fadein 1s linear"}:{display: "none"}}
-        className="">
-        {historyLinks}
-        </div>
         
       </div>
     </Fragment>
