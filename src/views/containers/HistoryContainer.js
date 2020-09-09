@@ -107,7 +107,7 @@ const HistoryContainer = (props) => {
         <button
           id="history"
           onClick = {() => historyButton()}
-          className="px-10 md:w-2/12 bg-black border border-darkviolet text-white mx-auto h-12 flex justify-around mt-20 hover:bg-darkviolet md:mt-16 lg:mt-12 mb-8"
+          className="px-10 bg-black border border-darkviolet text-white mx-auto h-12 flex justify-around mt-20 hover:bg-darkviolet md:mt-16 lg:mt-12 mb-8"
         >
           <span className="self-center font-opensans tracking-wide">
             History
