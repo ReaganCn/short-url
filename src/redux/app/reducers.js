@@ -10,6 +10,7 @@ import {
 
 const defaultState = {
   isLoggedin: false,
+  autoLogin: false,
   user: "",
   id:null,
   previousLinks: [],
@@ -27,6 +28,7 @@ const appReducer = (state = defaultState, action) => {
     case AUTO_LOGIN:
       return Object.assign({}, state, {
         isLoggedin: true,
+        autoLogin: true,
         id: action.data._id,
         user: action.data.userName,
         firstName: action.data.firstName
