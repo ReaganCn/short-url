@@ -12,7 +12,7 @@ const HomeComponent = (props) => {
           About
         </span>
         <span className="text-white font-semibold m-1 mr-2 font-opensans mt-3">
-          Account
+          {props.greeting}, {props.info.firstName}
         </span>
       </div>
       <div id="logo" className="w-4/12 mx-auto flex items-end">

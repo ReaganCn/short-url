@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
-
 //props.getUserInfo();
 
   return (

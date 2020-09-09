@@ -3,14 +3,26 @@ import { connect } from "react-redux";
 import ShortConnected from "./ShortContainer";
 import HomeComponent from "../components/HomeComponent";
 
-const mapStateToProps = ({app}) => {
+const mapStateToProps = ({ app }) => {
   return {
-    app:app
+    app: app,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {};
+};
+
+const greetingsHandler = () => {
+  const d = new Date();
+  const time = d.getHours();
+  if (time < 12) {
+    return "Good Morning";
+  } else if (time > 12 && time < 16) {
+    return "Good Afternoon";
+  } else {
+    return "Good Evening";
+  }
 };
 
 const HomeContainer = (props) => {
@@ -23,7 +35,7 @@ const HomeContainer = (props) => {
         }}
         className=""
       >
-        <HomeComponent />
+        <HomeComponent info={props.app}  greeting ={greetingsHandler()}/>
         <div className="flex">
           <ShortConnected />
         </div>
