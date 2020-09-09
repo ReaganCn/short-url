@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import ShortConnected from "./ShortContainer";
 import HomeComponent from "../components/HomeComponent";
 
-const mapStateToProps = ({}) => {
-  return {};
+const mapStateToProps = ({app}) => {
+  return {
+    app:app
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

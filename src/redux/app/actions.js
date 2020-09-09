@@ -8,6 +8,7 @@ import {
   RECEIVE_USER_LINKS,
   UPDATE_COPY,
   DEFAULT,
+  AUTO_LOGIN,
 } from "./types";
 
 const handleChange = (event) => {
@@ -75,4 +76,32 @@ const getLinks = (username) => {
   };
 };
 
-export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks };
+const getUser = (data) => {
+  return {
+    type: AUTO_LOGIN,
+    data
+  }
+}
+
+const receiveUser = () => {
+  return (dispatch) => {
+    return fetch("https://reagan-urlshort.glitch.me/users/user", {
+      credentials:'include',
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+    .then(doc => {
+     if(doc){
+      return doc.json()
+     }
+    })
+    .then(doc => {
+      if(doc.userName){
+        dispatch(getUser(doc))
+      }
+    })
+  }
+}
+
+export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser };

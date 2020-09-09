@@ -10,6 +10,9 @@ import {
 import HistoryComponent from "../components/HistoryComponent";
 import copy from "copy-to-clipboard";
 
+
+//---------------REDUX-------------------------
+
 const mapStateToProps = ({ shorten, app }) => {
   return {
     state: shorten,
@@ -65,7 +68,7 @@ const formatDate = (date) => {
   return months[newDate.getMonth()] + " " + newDate.getDate();
 };
 
-// React
+//---------------REACT-------------------------
 
 const ShortContainer = (props) => {
   const [copyPopup, setcopyPopup] = useState(false);
@@ -209,6 +212,7 @@ const ShortContainer = (props) => {
   );
 };
 
+//---------------REACT-REDUX-------------------------
 const ShortConnected = connect(
   mapStateToProps,
   mapDispatchToProps

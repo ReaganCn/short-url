@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import SignupForm from "../components/SignupForm";
 import { authenticateUser } from "../../redux/login/actions";
 import SigninForm from "../components/SigninForm";
-import { handleChange, loginAction } from "../../redux/app/actions";
+import { handleChange, loginAction, receiveUser } from "../../redux/app/actions";
 
 const mapStateToProps = ({ signin, app }) => {
   return {
@@ -24,6 +25,9 @@ const mapDispatchToProps = (dispatch) => {
     loginAction: (user) => {
       dispatch(loginAction(user));
     },
+    getUserInfo: ()=> {
+      dispatch(receiveUser())
+    }
     // getUserLinks: (username) => {
     //   dispatch(getLinks(username));
     // }
@@ -35,6 +39,8 @@ const SignInContainer = (props) => {
   const [signIn, setsignIn] = useState(true);
   const [samePassword, setsamePassword] = useState(false);
 
+  props.getUserInfo();
+  
   useEffect(() => {
     if (props.state.password === props.state.confirmpassword) {
       setsamePassword(true);
@@ -56,6 +62,7 @@ const SignInContainer = (props) => {
         headers: {
           "Content-type": "application/json",
         },
+        credentials:'include',
         body: JSON.stringify(props.state),
       })
         .then((result) => result.json())
@@ -76,18 +83,22 @@ const SignInContainer = (props) => {
     setisFetching(true);
     fetch(url, {
       method: "POST",
+      credentials:'include',
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(data),
     })
       .then((result) => result.json())
-      .then((authenticate) => {
+      .then((doc) => {
         setisFetching(false);
-        props.autheticateAction(authenticate);
-        authenticate && props.loginAction(props.state.username);
+        //props.autheticateAction(doc.authenticated);
+        console.log(doc)
+        doc.userName && props.loginAction(doc.userName);
       //  authenticate && props.getUserLinks(props.state.username)
       });
+
+
     event.preventDefault();
   };
 // style={ props.app.isLoggedin ? {visibility : "collapse"}: {visibility : "visible"}}

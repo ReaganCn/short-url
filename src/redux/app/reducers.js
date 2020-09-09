@@ -5,13 +5,16 @@ import {
   RECEIVE_USER_LINKS,
   UPDATE_COPY,
   DEFAULT,
+  AUTO_LOGIN,
 } from "./types";
 
 const defaultState = {
   isLoggedin: false,
   user: "",
+  id:null,
   previousLinks: [],
   isFetching: null,
+  firstName: ""
 };
 
 const appReducer = (state = defaultState, action) => {
@@ -21,6 +24,13 @@ const appReducer = (state = defaultState, action) => {
         isLoggedin: true,
         user: action.user,
       });
+    case AUTO_LOGIN:
+      return Object.assign({}, state, {
+        isLoggedin: true,
+        id: action.data._id,
+        user: action.data.userName,
+        firstName: action.data.firstName
+      })
     case LOGOUT:
       return Object.assign({}, state, {
         isLoggedin: false,
