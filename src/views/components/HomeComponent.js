@@ -20,10 +20,10 @@ const HomeComponent = (props) => {
         >
           <span className="text-xl text-center">Update your profile</span>
           <div id="details" className="flex flex-col justify-between">
-            <div className="flex justify-between flex-row my-4 mx-6 text-lg">
+            <div className="flex justify-between flex-row my-4 mx-6">
               <span>
                 First Name: &nbsp;&nbsp;&nbsp;
-                <strong className="text-base">Demo Account</strong>
+                <strong className="">Demo Account</strong>
                 <input
                   className=" p-1 outline-none border border-purple-400 w-3/12 text-sm ml-2 rounded border-opacity-50"
                   type="text"
@@ -35,7 +35,7 @@ const HomeComponent = (props) => {
                 Update
               </button>
             </div>
-            <div className="flex justify-between flex-row my-4 mx-6 text-lg">
+            <div className="flex justify-between flex-row my-4 mx-6">
               <span>
                 Password: &nbsp;&nbsp;&nbsp;
                 <input

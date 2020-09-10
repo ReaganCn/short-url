@@ -6,6 +6,7 @@ import {
   UPDATE_COPY,
   DEFAULT,
   AUTO_LOGIN,
+  FAILED_AUTO_LOGIN,
 } from "./types";
 
 const defaultState = {
@@ -15,7 +16,8 @@ const defaultState = {
   id:null,
   previousLinks: [],
   isFetching: null,
-  firstName: ""
+  firstName: "",
+  isLogging: true,
 };
 
 const appReducer = (state = defaultState, action) => {
@@ -24,6 +26,10 @@ const appReducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         isLoggedin: true,
         user: action.user,
+      });
+    case FAILED_AUTO_LOGIN:
+      return Object.assign({}, state, {
+        isLogging: false
       });
     case AUTO_LOGIN:
       return Object.assign({}, state, {

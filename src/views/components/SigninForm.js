@@ -36,13 +36,13 @@ const SigninForm = (props) => {
         type="submit"
       >
         <span
-          style={props.isFetching ? { display: "none" } : { display: "block" }}
+          style={props.isFetching || props.autoLogin ? { display: "none" } : { display: "block" }}
         >
           Sign In
         </span>
 
         <img
-          style={props.isFetching ? { display: "block" } : { display: "none" }}
+          style={props.isFetching || props.autoLogin ? { display: "block" } : { display: "none" }}
           className="w-6 h-6 inline m-auto"
           id="loader"
           src="public/imgs/customloader-white.png"

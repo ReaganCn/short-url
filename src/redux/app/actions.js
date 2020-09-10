@@ -9,6 +9,7 @@ import {
   UPDATE_COPY,
   DEFAULT,
   AUTO_LOGIN,
+  FAILED_AUTO_LOGIN,
 } from "./types";
 
 const handleChange = (event) => {
@@ -83,6 +84,12 @@ const getUser = (data) => {
   }
 }
 
+const failedAutoLogin = () => {
+  return {
+    type: FAILED_AUTO_LOGIN
+  }
+}
+
 const receiveUser = () => {
   return (dispatch) => {
     return fetch("https://reagan-urlshort.glitch.me/users/user", {
@@ -99,6 +106,8 @@ const receiveUser = () => {
     .then(doc => {
       if(doc.userName){
         dispatch(getUser(doc))
+      } else {
+        dispatch(failedAutoLogin())
       }
     })
   }

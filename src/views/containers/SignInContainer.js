@@ -39,7 +39,15 @@ const SignInContainer = (props) => {
   const [signIn, setsignIn] = useState(true);
   const [samePassword, setsamePassword] = useState(false);
 
-  props.getUserInfo();
+  const autoLogin = () => {
+    
+    props.getUserInfo();
+   
+  }
+  
+  useEffect(() => {
+    autoLogin();
+  }, [])
   
   useEffect(() => {
     if (props.state.password === props.state.confirmpassword) {
@@ -113,6 +121,7 @@ const SignInContainer = (props) => {
               toggleForm={() => toggleForm()}
               login={() => loginUser(event)}
               isFetching={isFetching}
+              autoLogin = {props.app.isLogging}
             />
           ) : (
             <SignupForm
