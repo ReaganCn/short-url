@@ -38,16 +38,6 @@ const SignInContainer = (props) => {
   const [isFetching, setisFetching] = useState(false);
   const [signIn, setsignIn] = useState(true);
   const [samePassword, setsamePassword] = useState(false);
-
-  const autoLogin = () => {
-    
-    props.getUserInfo();
-   
-  }
-  
-  useEffect(() => {
-    autoLogin();
-  }, [])
   
   useEffect(() => {
     if (props.state.password === props.state.confirmpassword) {
@@ -100,10 +90,9 @@ const SignInContainer = (props) => {
       .then((result) => result.json())
       .then((doc) => {
         setisFetching(false);
-        //props.autheticateAction(doc.authenticated);
-        console.log(doc)
-        doc.userName && props.loginAction(doc.userName);
-      //  authenticate && props.getUserLinks(props.state.username)
+        
+        doc.userName && props.loginAction(doc);
+    
       });
 
 

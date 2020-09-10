@@ -113,4 +113,19 @@ const receiveUser = () => {
   }
 }
 
-export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser };
+const logOutRequest = () => {
+  return (dispatch) => {
+    return fetch('https://reagan-urlshort.glitch.me/users/user/logout',{
+      credentials: 'include'
+    })
+    .then(doc => doc.json())
+    .then(doc => {
+      if (doc.logout){
+      dispatch(logoutAction())
+      }
+    })
+    .catch(err => console.log(err))
+  }
+}
+
+export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser, logOutRequest };

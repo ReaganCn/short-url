@@ -13,7 +13,7 @@ const defaultState = {
   isLoggedin: false,
   autoLogin: false,
   user: "",
-  id:null,
+  id: null,
   previousLinks: [],
   isFetching: null,
   firstName: "",
@@ -25,11 +25,12 @@ const appReducer = (state = defaultState, action) => {
     case LOGIN:
       return Object.assign({}, state, {
         isLoggedin: true,
-        user: action.user,
+        user: action.user.userName,
+        firstName: action.user.firstName
       });
     case FAILED_AUTO_LOGIN:
       return Object.assign({}, state, {
-        isLogging: false
+        isLogging: false,
       });
     case AUTO_LOGIN:
       return Object.assign({}, state, {
@@ -37,11 +38,12 @@ const appReducer = (state = defaultState, action) => {
         autoLogin: true,
         id: action.data._id,
         user: action.data.userName,
-        firstName: action.data.firstName
-      })
+        firstName: action.data.firstName,
+      });
     case LOGOUT:
       return Object.assign({}, state, {
         isLoggedin: false,
+        isLogging: false,
       });
     case REQUEST_USER_LINKS:
       return Object.assign({}, state, {
@@ -59,7 +61,7 @@ const appReducer = (state = defaultState, action) => {
     case UPDATE_COPY:
       const newLinks = state.previousLinks.map((item) => {
         if (item._id === action.id) {
-          item.copied ? item.copied = false : item.copied = true
+          item.copied ? (item.copied = false) : (item.copied = true);
         }
         return item;
       });

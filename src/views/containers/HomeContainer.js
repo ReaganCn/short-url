@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ShortConnected from "./ShortContainer";
 import HomeComponent from "../components/HomeComponent";
 import HistoryConnected from "./HistoryContainer";
+import { logOutRequest } from "../../redux/app/actions";
 
 const mapStateToProps = ({ app }) => {
   return {
@@ -11,7 +12,11 @@ const mapStateToProps = ({ app }) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    logOutUser: () => {
+      dispatch(logOutRequest())
+    }
+  };
 };
 
 const greetingsHandler = () => {
@@ -56,6 +61,7 @@ const HomeContainer = (props) => {
           showAccountSettings={showAccountSettings}
           accountSettingsToggle={()=> accountSettingsToggle()}
           showAccountMenu={showAccountMenu}
+          logOut = {()=>props.logOutUser()}
         />
         <ShortConnected />
         <div className="flex flex-col bg-black mx-auto">

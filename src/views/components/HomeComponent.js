@@ -71,7 +71,7 @@ const HomeComponent = (props) => {
         </span>
         <div className="flex mt-3 flex-col hover:text-purple-200">
           <button
-            className="text-white font-semibold mr-2 font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300"
+            className="text-white font-semibold mr-2 font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300 md:w-64"
             onClick={props.accountMenuToggle}
           >
             {props.greeting}, {props.info.firstName}
@@ -96,7 +96,9 @@ const HomeComponent = (props) => {
                 Profile Settings&nbsp;&nbsp;&nbsp;
                 <i className="fa fa-caret-right"></i>
               </button>
-              <button className=" w-full mx-auto text-purple-600 font-bold cursor-pointer hover:bg-darkviolet hover:text-white rounded">
+              <button className=" w-full mx-auto text-purple-600 font-bold cursor-pointer hover:bg-darkviolet hover:text-white rounded"
+              onClick={props.logOut}
+              >
                 Logout&nbsp;&nbsp;&nbsp;<i className="fa fa-sign-out"></i>
               </button>
             </div>

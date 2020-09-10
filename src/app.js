@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import SignInConnected from "./views/containers/SignInContainer";
@@ -14,16 +14,32 @@ const mapStateToProps = ({ app }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    getUserInfo: () => {
+      dispatch(receiveUser());
+    },
   };
 };
 
 const App = (props) => {
-//props.getUserInfo();
+  //props.getUserInfo();
+  const [isLoggedIn, setisLoggedIn] = useState(false);
+
+
+  const autoLogin = () => {
+    props.getUserInfo();
+  };
+
+  useEffect(() => {
+    autoLogin();
+  }, [])
+
+  useEffect(() => {
+    setisLoggedIn(props.state.isLoggedin)
+  }, [props.state.isLoggedin]);
 
   return (
     <Fragment>
-      {props.state.isLoggedin ? <HomeConnected /> : <SignInConnected />}
+      {isLoggedIn ? <HomeConnected /> : <SignInConnected />}
     </Fragment>
   );
 };
