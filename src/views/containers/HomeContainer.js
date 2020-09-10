@@ -19,14 +19,25 @@ const greetingsHandler = () => {
   const time = d.getHours();
   if (time < 12) {
     return "Good Morning";
-  } else if (time > 12 && time < 16) {
+  } else if (time > 11 && time < 16) {
     return "Good Afternoon";
-  } else {
+  } else if(time > 15) {
     return "Good Evening";
   }
 };
 
 const HomeContainer = (props) => {
+  const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const [showAccountSettings, setShowAccountSettings] = useState(false);
+
+ const accountMenuToggle = () => {
+    showAccountMenu ? setShowAccountMenu(false) : setShowAccountMenu(true);
+  };
+
+  const accountSettingsToggle = () => {
+    showAccountSettings ? setShowAccountSettings(false) : setShowAccountSettings(true);
+  };
+
   return (
     <Fragment>
       <div
@@ -34,16 +45,22 @@ const HomeContainer = (props) => {
           backgroundImage: "url('public/imgs/HeaderImageBlack.png')",
           backgroundRepeat: "no-repeat",
           backgroundColor: "black",
-          height: "100vh"
+          height: "100vh",
         }}
         className=""
       >
-        <HomeComponent info={props.app}  greeting ={greetingsHandler()}/>
+        <HomeComponent
+          info={props.app}
+          greeting={greetingsHandler()}
+          accountMenuToggle={() => accountMenuToggle()}
+          showAccountSettings={showAccountSettings}
+          accountSettingsToggle={()=> accountSettingsToggle()}
+          showAccountMenu={showAccountMenu}
+        />
         <ShortConnected />
         <div className="flex flex-col bg-black mx-auto">
-        <HistoryConnected />
+          <HistoryConnected />
         </div>
-        
       </div>
     </Fragment>
   );
