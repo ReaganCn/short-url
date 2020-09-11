@@ -16,7 +16,7 @@ const HomeComponent = (props) => {
       >
         <div
           id="account-settings-popup"
-          className="w-5/12 bg-white flex flex-col rounded-lg p-3 shadow-2xl self-center opacity-100 my-20 h-64 justify-between content-center"
+          className="md:w-5/12 bg-white flex flex-col rounded-lg p-3 shadow-2xl self-center opacity-100 my-20 h-64 justify-between content-center"
         >
           <span className="text-xl text-center">Update your profile</span>
           <div id="details" className="flex flex-col justify-between">
@@ -71,15 +71,18 @@ const HomeComponent = (props) => {
         </span>
         <div className="flex mt-3 flex-col hover:text-purple-200">
           <button
-            className="text-white font-semibold mr-2 font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300 md:w-64"
+            className="text-white font-semibold font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300 md:w-64"
             onClick={props.accountMenuToggle}
           >
             {props.greeting}, {props.info.firstName}
           </button>
           <i className="fa fa-caret-down text-white mx-auto -mt-1 text-xs"></i>
-          <div className="relative ml-8 w-11/12" id="account-menu">
+
+
+
+          <div className="relative md:ml-8 w-full md:w-11/12" id="account-menu">
             <div
-              className="flex flex-col z-10 bg-white font-opensans h-20 w-11/12 justify-between p-2 rounded text-center shadow-xl absolute left-0"
+              className="w-full flex flex-col z-10 bg-white font-opensans h-20 md:w-11/12 justify-between p-2 rounded text-center shadow-xl absolute left-0"
               style={
                 props.showAccountMenu
                   ? {

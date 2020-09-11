@@ -10,6 +10,8 @@ import {
   DEFAULT,
   AUTO_LOGIN,
   FAILED_AUTO_LOGIN,
+  REQUEST_UPDATE,
+  RECIEVE_UPDATE,
 } from "./types";
 
 const handleChange = (event) => {
@@ -33,6 +35,19 @@ const receiveInfo = (data) => {
     data,
   };
 };
+
+const requestUpdate = () => {
+  return {
+    type: REQUEST_UPDATE
+  }
+}
+
+const receiveUpdate = (name) => {
+  return {
+    type: RECIEVE_UPDATE,
+    name
+  }
+}
 
 const requestLinks = () => {
   return {
@@ -128,4 +143,24 @@ const logOutRequest = () => {
   }
 }
 
-export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser, logOutRequest };
+const updateDetailsRequest = (data) => {
+  return (dispatch) => {
+    dispatch(requestUpdate())
+    return fetch("https://reagan-urlshort.glitch.me/users/update", {
+    method: "POST",  
+    credentials: 'include',
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(data)
+    })
+    .then(doc => doc.json())
+    .then(doc => {
+      if(doc.userName){
+        dispatch(receiveUpdate(doc.firstName))
+      }
+    })
+  }
+}
+
+export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser, logOutRequest, updateDetailsRequest };

@@ -7,6 +7,8 @@ import {
   DEFAULT,
   AUTO_LOGIN,
   FAILED_AUTO_LOGIN,
+  REQUEST_UPDATE,
+  RECIEVE_UPDATE,
 } from "./types";
 
 const defaultState = {
@@ -18,6 +20,7 @@ const defaultState = {
   isFetching: null,
   firstName: "",
   isLogging: true,
+  newPassword: ""
 };
 
 const appReducer = (state = defaultState, action) => {
@@ -26,7 +29,7 @@ const appReducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         isLoggedin: true,
         user: action.user.userName,
-        firstName: action.user.firstName
+        firstName: action.user.firstName,
       });
     case FAILED_AUTO_LOGIN:
       return Object.assign({}, state, {
@@ -44,6 +47,15 @@ const appReducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         isLoggedin: false,
         isLogging: false,
+      });
+    case REQUEST_UPDATE:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+    case RECIEVE_UPDATE:
+      return Object.assign({}, state, {
+        firstName: action.name,
+        isFetching: false,
       });
     case REQUEST_USER_LINKS:
       return Object.assign({}, state, {
