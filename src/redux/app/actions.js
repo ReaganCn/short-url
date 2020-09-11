@@ -156,8 +156,8 @@ const updateDetailsRequest = (data) => {
     })
     .then(doc => doc.json())
     .then(doc => {
-      if(doc.userName){
-        dispatch(receiveUpdate(doc.firstName))
+      if(doc.user.userName){
+        dispatch(receiveUpdate(doc.user.firstName))
       }
     })
   }

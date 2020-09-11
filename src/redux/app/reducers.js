@@ -9,6 +9,7 @@ import {
   FAILED_AUTO_LOGIN,
   REQUEST_UPDATE,
   RECIEVE_UPDATE,
+  ON_CHANGE,
 } from "./types";
 
 const defaultState = {
@@ -18,9 +19,12 @@ const defaultState = {
   id: null,
   previousLinks: [],
   isFetching: null,
+  isFetchingUpdate: null,
   firstName: "",
   isLogging: true,
-  newPassword: ""
+  newPassword: "",
+  newFirstName: "",
+  confirmPassword: "",
 };
 
 const appReducer = (state = defaultState, action) => {
@@ -30,6 +34,7 @@ const appReducer = (state = defaultState, action) => {
         isLoggedin: true,
         user: action.user.userName,
         firstName: action.user.firstName,
+        newFirstName: action.user.firstName,
       });
     case FAILED_AUTO_LOGIN:
       return Object.assign({}, state, {
@@ -42,20 +47,31 @@ const appReducer = (state = defaultState, action) => {
         id: action.data._id,
         user: action.data.userName,
         firstName: action.data.firstName,
+        newFirstName: action.data.firstName,
       });
     case LOGOUT:
       return Object.assign({}, state, {
         isLoggedin: false,
         isLogging: false,
       });
+    case ON_CHANGE:
+      if (action.name !== "newFirstName") {
+        return Object.assign({}, state, {
+          [action.name]: action.value,
+        });
+      } else {
+        return Object.assign({}, state, {
+          newFirstName: action.value,
+        });
+      }
     case REQUEST_UPDATE:
       return Object.assign({}, state, {
-        isFetching: true,
+        isFetchingUpdate: true,
       });
     case RECIEVE_UPDATE:
       return Object.assign({}, state, {
         firstName: action.name,
-        isFetching: false,
+        isFetchingUpdate: false,
       });
     case REQUEST_USER_LINKS:
       return Object.assign({}, state, {
