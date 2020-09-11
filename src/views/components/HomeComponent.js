@@ -22,9 +22,12 @@ const HomeComponent = (props) => {
           id="account-settings-popup"
           className="md:w-5/12 bg-white flex flex-col rounded-lg p-3 shadow-2xl self-center opacity-100 my-20 justify-between content-center h-auto"
         >
-          <span
-            className="text-xl text-center mb-2 font-semibold"
-          ><i className={`fa fa-cog text-darkviolet ${props.isFetching ? "animate-spin" : "slow-spin"}`} ariaHidden="true"></i>
+          <span className="text-xl text-center mb-2 font-semibold">
+            <i
+              className={`fa fa-cog text-darkviolet ${
+                props.isFetching ? "animate-spin" : "slow-spin"
+              }`}
+            ></i>
             &nbsp;&nbsp;Update your profile
           </span>
           <div id="details" className="flex flex-col justify-between">
@@ -54,7 +57,18 @@ const HomeComponent = (props) => {
             <span className="mx-6 font-semibold">
               Password &nbsp;&nbsp;&nbsp;
             </span>
-            <div className="flex justify-between flex-row my-4 mx-6">
+            <div
+              className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded relative w-10/12 mx-auto my-4"
+              role="alert"
+              style={props.restrictDemo ? {display: "block"} : {display: "none"}}
+            >
+              <span className="block sm:inline">
+                Cannot update password on a Demo Account
+              </span>
+              <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+              </span>
+            </div>
+            <div className="flex justify-between flex-row my-4 mx-6" style={!props.restrictDemo ? {display: "block"} : {display: "none"}}>
               <input
                 className=" p-1 outline-none border border-purple-400 w-4/12 text-sm ml-2 rounded border-opacity-50"
                 type="password"
@@ -84,7 +98,7 @@ const HomeComponent = (props) => {
               </span>
 
               <button
-                className="text-sm md:text-base border w-3/12 md:w-2/12 hover:text-white p-1 rounded hover:border-transparent ml-5 hover:bg-darkviolet bg-white border-darkviolet text-darkviolet"
+                className="text-sm md:text-base border w-3/12 md:w-2/12 hover:text-white p-1 rounded hover:border-transparent ml-5 hover:bg-darkviolet bg-white border-darkviolet text-darkviolet float-right"
                 id="newpassword"
                 onClick={props.updateInfo}
               >
