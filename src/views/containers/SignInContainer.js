@@ -50,9 +50,21 @@ const SignInContainer = (props) => {
     message: "Invalid username or password"
   }
 
-  const failedRegister = {
+  const failedRegisterPassword = {
     title: "Registration Failed",
-    message: "Invalid username or password"
+    message: "Password Missmatch"
+  }
+
+  const failedRegisterUsername = {
+    title: "Registration Failed",
+    message: "Username already taken"
+  }
+
+  const alertHandler = (title, msg) => {
+    return {
+      title: title,
+      message: msg
+    }
   }
 
   useEffect(() => {
@@ -82,7 +94,17 @@ const SignInContainer = (props) => {
         .then((result) => result.json())
         .then((info) => {
           setisFetching(false);
+          if(info.user){
+            setshowAlert(true);
+            setalertMessage(alertHandler("Registration Successfull", ""))
+          } else {
+            setshowAlert(true);
+            setalertMessage(alertHandler("Registration Failed",info.err));
+          }
         });
+    } else {
+      setshowAlert(true);
+      setalertMessage(alertHandler("Registration Failed","Password Missmatch"));
     }
     event.preventDefault();
   };
