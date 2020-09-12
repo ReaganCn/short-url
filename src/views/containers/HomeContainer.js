@@ -86,9 +86,9 @@ const HomeContainer = (props) => {
           password: props.app.newPassword,
           username: props.app.user,
         };
-        props.updateRequest(info);
+        props.app.user !== "demo1" && props.updateRequest(info);
       }
-    
+    event.preventDefault();
   };
 
   return (

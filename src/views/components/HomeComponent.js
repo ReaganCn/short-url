@@ -35,7 +35,7 @@ const HomeComponent = (props) => {
               Full Name
               {/* <strong className="">{props.info.firstName}</strong> */}
             </span>
-            <div className="flex justify-between flex-row my-4 mx-6">
+            <form className="flex justify-between flex-row my-4 mx-6">
               <input
                 className=" p-1 outline-none border border-purple-400 w-4/12 text-sm ml-2 rounded border-opacity-50"
                 type="text"
@@ -53,7 +53,7 @@ const HomeComponent = (props) => {
               >
                 <span>Update</span>
               </button>
-            </div>
+            </form>
             <span className="mx-6 font-semibold">
               Password &nbsp;&nbsp;&nbsp;
             </span>
