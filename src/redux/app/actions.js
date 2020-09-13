@@ -12,6 +12,7 @@ import {
   FAILED_AUTO_LOGIN,
   REQUEST_UPDATE,
   RECIEVE_UPDATE,
+  RESET_ALERT
 } from "./types";
 
 const handleChange = (event) => {
@@ -36,16 +37,23 @@ const receiveInfo = (data) => {
   };
 };
 
+const resetAlertAction = () => {
+return {
+  type: RESET_ALERT
+}
+}
+
 const requestUpdate = () => {
   return {
     type: REQUEST_UPDATE
   }
 }
 
-const receiveUpdate = (name) => {
+const receiveUpdate = (name, message) => {
   return {
     type: RECIEVE_UPDATE,
-    name
+    name,
+    message
   }
 }
 
@@ -157,7 +165,7 @@ const updateDetailsRequest = (data) => {
     .then(doc => doc.json())
     .then(doc => {
       if(doc.user.userName){
-        dispatch(receiveUpdate(doc.user.firstName))
+        dispatch(receiveUpdate(doc.user.firstName, "Profile Saved"))
       }
     })
   }

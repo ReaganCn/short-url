@@ -48,6 +48,7 @@ const HomeContainer = (props) => {
   const [validInfo, setvalidInfo] = useState(false);
   const [restrictDemo, setrestrictDemo] = useState(false);
   //const [confirmPassword, setconfirmPassword] = useState("");
+  const [alert, setAlert] = useState(false);
 
   useEffect(()=> {
     if(props.app.user === "demo1") {
@@ -86,7 +87,7 @@ const HomeContainer = (props) => {
           password: props.app.newPassword,
           username: props.app.user,
         };
-        props.app.user !== "demo1" && props.updateRequest(info);
+       props.updateRequest(info);
       }
     event.preventDefault();
   };

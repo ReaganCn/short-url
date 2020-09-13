@@ -60,15 +60,21 @@ const HomeComponent = (props) => {
             <div
               className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded relative w-10/12 mx-auto my-4"
               role="alert"
-              style={props.restrictDemo ? {display: "block"} : {display: "none"}}
+              style={
+                props.restrictDemo ? { display: "block" } : { display: "none" }
+              }
             >
               <span className="block sm:inline">
                 Cannot update password on a Demo Account
               </span>
-              <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
-              </span>
+              <span className="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
             </div>
-            <div className="flex justify-between flex-row my-4 mx-6" style={!props.restrictDemo ? {display: "block"} : {display: "none"}}>
+            <div
+              className="flex justify-between flex-row my-4 mx-6"
+              style={
+                !props.restrictDemo ? { display: "block" } : { display: "none" }
+              }
+            >
               <input
                 className=" p-1 outline-none border border-purple-400 w-4/12 text-sm ml-2 rounded border-opacity-50"
                 type="password"
@@ -112,6 +118,29 @@ const HomeComponent = (props) => {
           >
             Done
           </button>
+        </div>
+      </div>
+
+      {/*---------------------------------- ALERT ----------------------------------*/}
+      <div className="relative w-full flex justify-center">
+        <div
+          className="bg-purple-100 border border-purple-400 text-purple-700 px-4 py-2 rounded absolute text-sm w-4/12 z-10"
+          role="alert"
+        >
+          <span className="block sm:inline">
+            Something seriously bad happened.
+          </span>
+          <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg
+              className="fill-current h-4 w-4 text-purple-500"
+              role="button"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <title>Close</title>
+              <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+            </svg>
+          </span>
         </div>
       </div>
 

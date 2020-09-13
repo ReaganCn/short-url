@@ -9,7 +9,7 @@ import {
   FAILED_AUTO_LOGIN,
   REQUEST_UPDATE,
   RECIEVE_UPDATE,
-  ON_CHANGE,
+  ON_CHANGE, RESET_ALERT
 } from "./types";
 
 const defaultState = {
@@ -25,6 +25,8 @@ const defaultState = {
   newPassword: "",
   newFirstName: "",
   confirmPassword: "",
+  alert: false,
+  alertMessage: ""
 };
 
 const appReducer = (state = defaultState, action) => {
@@ -72,7 +74,14 @@ const appReducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         firstName: action.name,
         isFetchingUpdate: false,
+        alert: true,
+        alertMessage:action.message
       });
+    case RESET_ALERT:
+      return Object.assign({}, state, {
+        alert: false,
+        alertMessage: ""
+      })
     case REQUEST_USER_LINKS:
       return Object.assign({}, state, {
         isFetching: true,
