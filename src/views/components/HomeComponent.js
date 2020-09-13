@@ -122,15 +122,15 @@ const HomeComponent = (props) => {
       </div>
 
       {/*---------------------------------- ALERT ----------------------------------*/}
-      <div className="relative w-full flex justify-center">
+      <div className="relative w-full flex justify-center mx-auto" style={props.info.alert ? {visibility:"visible"}: {visibility: "collapse"}}>
         <div
-          className="bg-purple-100 border border-purple-400 text-purple-700 px-4 py-2 rounded absolute text-sm w-4/12 z-10"
+          className="bg-purple-100 border border-purple-400 text-purple-700 px-4 py-2 rounded absolute text-sm w-4/12 z-10 mt-8"
           role="alert"
         >
           <span className="block sm:inline">
-            Something seriously bad happened.
+            {props.info.alertMessage}
           </span>
-          <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+          <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={props.resetAlert}>
             <svg
               className="fill-current h-4 w-4 text-purple-500"
               role="button"

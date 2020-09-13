@@ -166,9 +166,12 @@ const updateDetailsRequest = (data) => {
     .then(doc => {
       if(doc.user.userName){
         dispatch(receiveUpdate(doc.user.firstName, "Profile Saved"))
+        setTimeout(()=> {
+          dispatch(resetAlertAction())
+        }, 4000)
       }
     })
   }
 }
 
-export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser, logOutRequest, updateDetailsRequest };
+export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser, logOutRequest, updateDetailsRequest, resetAlertAction };

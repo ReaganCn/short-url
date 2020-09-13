@@ -7,6 +7,7 @@ import {
   logOutRequest,
   updateDetailsRequest,
   handleChange,
+  resetAlertAction
 } from "../../redux/app/actions";
 
 const mapStateToProps = ({ app }) => {
@@ -26,6 +27,9 @@ const mapDispatchToProps = (dispatch) => {
     handleChange: (event) => {
       dispatch(handleChange(event));
     },
+    resetAlert: () => {
+      dispatch(resetAlertAction())
+    }
   };
 };
 
@@ -116,6 +120,7 @@ const HomeContainer = (props) => {
           updateInfo={() => updateInfo(event)}
           isFetching={props.app.isFetchingUpdate}
           restrictDemo = {restrictDemo}
+          resetAlert = {()=> props.resetAlert()}
         />
         <ShortConnected />
         <div className="flex flex-col bg-black mx-auto">
