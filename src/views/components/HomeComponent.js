@@ -152,6 +152,7 @@ const HomeComponent = (props) => {
         </span>
         <div className="flex mt-3 flex-col hover:text-purple-200">
           <button
+            id="account-button"
             className="text-white font-semibold font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300 md:w-64"
             onClick={props.accountMenuToggle}
           >
@@ -164,7 +165,7 @@ const HomeComponent = (props) => {
               className="w-full flex flex-col z-10 bg-white font-opensans h-20 md:w-11/12 justify-between p-2 rounded text-center shadow-xl absolute left-0"
               style={
                 props.showAccountMenu
-                  ? {
+                  ? { 
                       visibility: "visible",
                       animation: "0.7s linear 0s 1 normal none running fadein",
                     }
