@@ -47,25 +47,25 @@ const SignInContainer = (props) => {
 
   const invalidLogin = {
     title: "Authentication Failed",
-    message: "Invalid username or password"
-  }
+    message: "Invalid username or password",
+  };
 
   const failedRegisterPassword = {
     title: "Registration Failed",
-    message: "Password Missmatch"
-  }
+    message: "Password Missmatch",
+  };
 
   const failedRegisterUsername = {
     title: "Registration Failed",
-    message: "Username already taken"
-  }
+    message: "Username already taken",
+  };
 
   const alertHandler = (title, msg) => {
     return {
       title: title,
-      message: msg
-    }
-  }
+      message: msg,
+    };
+  };
 
   useEffect(() => {
     if (props.state.password === props.state.confirmpassword) {
@@ -94,17 +94,19 @@ const SignInContainer = (props) => {
         .then((result) => result.json())
         .then((info) => {
           setisFetching(false);
-          if(info.user){
+          if (info.user) {
             setshowAlert(true);
-            setalertMessage(alertHandler("Registration Successfull", ""))
+            setalertMessage(alertHandler("Registration Successfull", ""));
           } else {
             setshowAlert(true);
-            setalertMessage(alertHandler("Registration Failed",info.err));
+            setalertMessage(alertHandler("Registration Failed", info.err));
           }
         });
     } else {
       setshowAlert(true);
-      setalertMessage(alertHandler("Registration Failed","Password Missmatch"));
+      setalertMessage(
+        alertHandler("Registration Failed", "Password Missmatch")
+      );
     }
     event.preventDefault();
   };
@@ -138,35 +140,37 @@ const SignInContainer = (props) => {
   // style={ props.app.isLoggedin ? {visibility : "collapse"}: {visibility : "visible"}}
   return (
     <Fragment>
-      <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-2xl">
-        <div
-          style={showAlert ? {display: "block"} : {display: "none"}}
-          className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-4 text-sm font-opensans"
-          role="alert"
-        >
-          <p className="font-bold">{alertMessage.title}</p>
-          <p>{alertMessage.message}</p>
-        </div>
-        <div className="flex justify-center md:justify-start md:m-10">
-          {signIn ? (
-            <SigninForm
-              input={props.state}
-              onChange={() => props.handleChange(event)}
-              toggleForm={() => toggleForm()}
-              login={() => loginUser(event)}
-              isFetching={isFetching}
-              autoLogin={props.app.isLogging}
-            />
-          ) : (
-            <SignupForm
-              input={props.state}
-              onChange={() => props.handleChange(event)}
-              onSubmit={() => handleSubmit(event)}
-              isFetching={isFetching}
-              toggleForm={() => toggleForm()}
-              samePassword={samePassword}
-            />
-          )}
+      <div className="w-full h-full">
+        <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-2xl">
+          <div
+            style={showAlert ? { display: "block" } : { display: "none" }}
+            className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-4 text-sm font-opensans"
+            role="alert"
+          >
+            <p className="font-bold">{alertMessage.title}</p>
+            <p>{alertMessage.message}</p>
+          </div>
+          <div className="flex justify-center md:justify-start md:m-10">
+            {signIn ? (
+              <SigninForm
+                input={props.state}
+                onChange={() => props.handleChange(event)}
+                toggleForm={() => toggleForm()}
+                login={() => loginUser(event)}
+                isFetching={isFetching}
+                autoLogin={props.app.isLogging}
+              />
+            ) : (
+              <SignupForm
+                input={props.state}
+                onChange={() => props.handleChange(event)}
+                onSubmit={() => handleSubmit(event)}
+                isFetching={isFetching}
+                toggleForm={() => toggleForm()}
+                samePassword={samePassword}
+              />
+            )}
+          </div>
         </div>
       </div>
     </Fragment>
