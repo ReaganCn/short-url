@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 import SignupForm from "../components/SignupForm";
-import { authenticateUser } from "../../redux/login/actions";
+import { authenticateUser, loginDemoAction, resetLoginsAction } from "../../redux/login/actions";
 import SigninForm from "../components/SigninForm";
 import {
   handleChange,
@@ -32,6 +32,12 @@ const mapDispatchToProps = (dispatch) => {
     getUserInfo: () => {
       dispatch(receiveUser());
     },
+    loginDemoAcc: () => {
+      dispatch(loginDemoAction());
+    },
+    resetLogins: () => {
+      dispatch(resetLoginsAction())
+    }
     // getUserLinks: (username) => {
     //   dispatch(getLinks(username));
     // }
@@ -114,10 +120,12 @@ const SignInContainer = (props) => {
   const loginUser = (event) => {
     // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://reagan-urlshort.glitch.me/users/authenticate";
+
     const data = {
       username: props.state.username,
       password: props.state.password,
     };
+    console.log(data);
     setisFetching(true);
     fetch(url, {
       method: "POST",
@@ -137,11 +145,44 @@ const SignInContainer = (props) => {
 
     event.preventDefault();
   };
+
+  useEffect(() => {
+    if (props.state.username === "demo1") {
+      loginUser(event);
+    }
+    return () => {
+      props.resetLogins()
+    }
+  }, [props.state.username])
+  const loginDemo = (event) => {
+    props.loginDemoAcc();
+  };
   // style={ props.app.isLoggedin ? {visibility : "collapse"}: {visibility : "visible"}}
   return (
     <Fragment>
       <div className="w-full h-full">
-        <div className="container w-3/4  border rounded-lg mx-auto mt-10 md:mt-20 shadow-2xl">
+        <div id="logo" className="w-2/12 mx-auto flex items-end">
+          <img src="public/imgs/logo.png" className="inline-block " />
+          <img
+            id="logo-dot"
+            src="public/imgs/logo-dot.png"
+            // style={{ width: "25px", height: "25px" }}
+            className="w-3 h-3 mb-6"
+          />
+        </div>
+        <div className="text-center flex flex-col">
+          <span className="font-opensans md:text-2xl font-semibold text-lg">
+            Get short and customized links in an instant
+          </span>
+          <span
+            className="font-opensans md:text-xs font-semibold my-1 text-darkviolet cursor-pointer hover:text-purple-600"
+            onClick={() => loginDemo(event)}
+          >
+            Don't want create an account? Click here to sign in with the demo
+            account.
+          </span>
+        </div>
+        <div className="container w-3/4  border rounded-lg mx-auto md:mt-10 shadow-2xl">
           <div
             style={showAlert ? { display: "block" } : { display: "none" }}
             className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-4 text-sm font-opensans"

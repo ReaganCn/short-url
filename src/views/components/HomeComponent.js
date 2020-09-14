@@ -189,6 +189,7 @@ const HomeComponent = (props) => {
           </div>
         </div>
       </div>
+{/*---------------------------------- HEADER ----------------------------------*/}
 
       <div id="logo" className="w-4/12 mx-auto flex items-end">
         <img src="public/imgs/logo3.png" className="inline-block xl:max-w-lg" />
