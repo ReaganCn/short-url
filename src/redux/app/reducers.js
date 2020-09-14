@@ -11,6 +11,7 @@ import {
   RECIEVE_UPDATE,
   ON_CHANGE,
   RESET_ALERT,
+  SET_ALERT
 } from "./types";
 
 const defaultState = {
@@ -78,6 +79,11 @@ const appReducer = (state = defaultState, action) => {
         alert: true,
         alertMessage: action.message,
       });
+    case SET_ALERT:
+      return Object.assign({}, state, {
+        alert: true,
+        alertMessage: action.message
+      })
     case RESET_ALERT:
       return Object.assign({}, state, {
         alert: false,
