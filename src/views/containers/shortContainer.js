@@ -6,6 +6,7 @@ import {
   handleChange,
   getLinks,
   updateCopyLinks,
+  setAlertAction, resetAlertAction
 } from "../../redux/app/actions";
 import HistoryComponent from "../components/HistoryComponent";
 import copy from "copy-to-clipboard";
@@ -37,6 +38,12 @@ const mapDispatchToProps = (dispatch) => {
     updateHistoryCopy: (id) => {
       dispatch(updateCopyLinks(id));
     },
+    sendAlert: (message) => {
+      dispatch(setAlertAction(message))
+    },
+    resetAlert: () => {
+      dispatch(resetAlertAction())
+    }
   };
 };
 
@@ -87,7 +94,14 @@ const ShortContainer = (props) => {
       url: props.state.url,
     };
     event.preventDefault();
-    props.shortenUrl(originalUrl, props.app.user);
+    if(props.state.url !== ""){
+      props.shortenUrl(originalUrl, props.app.user);
+    } else {
+      props.sendAlert("Please input a valid link e.g. www.google.com")
+      setTimeout(()=> {
+      props.resetAlert()
+      }, 4000)
+    }
   };
 
   const handleClick = () => {

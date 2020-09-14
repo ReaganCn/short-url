@@ -12,7 +12,7 @@ import {
   FAILED_AUTO_LOGIN,
   REQUEST_UPDATE,
   RECIEVE_UPDATE,
-  RESET_ALERT
+  RESET_ALERT, SET_ALERT
 } from "./types";
 
 const handleChange = (event) => {
@@ -42,6 +42,13 @@ return {
   type: RESET_ALERT
 }
 }
+
+const setAlertAction = (message) => {
+  return {
+    type: SET_ALERT,
+    message
+  }
+  }
 
 const requestUpdate = () => {
   return {
@@ -174,4 +181,4 @@ const updateDetailsRequest = (data) => {
   }
 }
 
-export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser, logOutRequest, updateDetailsRequest, resetAlertAction };
+export { handleChange, loginAction, logoutAction, getLinks, updateCopyLinks, receiveUser, logOutRequest, updateDetailsRequest, resetAlertAction, setAlertAction };
