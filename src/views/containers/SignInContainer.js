@@ -151,7 +151,9 @@ const SignInContainer = (props) => {
       loginUser(event);
     }
     return () => {
-      props.resetLogins()
+      if (props.state.username === "demo1") {
+        props.resetLogins()
+      }
     }
   }, [props.state.username])
   const loginDemo = (event) => {
