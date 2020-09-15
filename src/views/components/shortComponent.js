@@ -12,12 +12,12 @@ const ShortComponent = (props) => {
           name="url"
           id="original url"
           placeholder="Shorten your link..."
-          className="h-full border border-purple-400 border-t-0 border-r-0 border-l-0 outline-none p-1 w-10/12 text-sm bg-white appearance-none pl-2"
+          className="h-8 md:h-full border border-purple-400 border-t-0 border-r-0 border-l-0 outline-none p-1 w-10/12 text-sm bg-white appearance-none pl-2"
           onChange={props.handleChange}
           value={props.input.url}
         />
         <button
-          className="text-xs md:text-base md:h-full border w-3/12 md:w-2/12 text-white p-1 rounded border-transparent ml-5 bg-darkviolet hover:bg-black hover:border-darkviolet"
+          className="text-xs md:text-base md:h-full border w-3/12 md:w-2/12 text-white p-1 rounded border-transparent ml-5 bg-darkviolet hover:bg-black hover:border-darkviolet h-8"
           type="submit"
           // onClick={props.handleClick}
         >

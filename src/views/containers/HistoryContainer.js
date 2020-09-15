@@ -107,7 +107,7 @@ const HistoryContainer = (props) => {
         <button
           id="history"
           onClick = {() => historyButton()}
-          className="px-10 bg-black border border-darkviolet text-white mx-auto h-12 flex justify-around mt-20 hover:bg-darkviolet mb-8"
+          className="md:px-10 bg-black border border-darkviolet text-white mx-auto md:h-12 flex justify-around mt-20 hover:bg-darkviolet mb-8 md:text-base text-xs h-8 px-5"
         >
           <span className="self-center font-opensans tracking-wide">
             History
@@ -115,7 +115,7 @@ const HistoryContainer = (props) => {
           &nbsp;&nbsp;&nbsp;
           <span className="self-center text-darkviolet arrow">
             <svg
-              className={`w-5 h-5 font-bold ${showHistory ? "" : "animate-bounce"}`}
+              className={`w-3 md:w-5 h-3 md:h-5 font-bold ${showHistory ? "" : "animate-bounce"}`}
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"

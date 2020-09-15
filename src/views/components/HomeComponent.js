@@ -37,7 +37,7 @@ const HomeComponent = (props) => {
             </span>
             <form className="flex justify-between flex-row my-4 mx-6">
               <input
-                className=" p-1 outline-none border border-purple-400 w-4/12 text-sm ml-2 rounded border-opacity-50"
+                className="w-6/12 p-1 outline-none border border-purple-400 md:w-4/12 text-sm ml-2 rounded border-opacity-50"
                 type="text"
                 name="newFirstName"
                 autoComplete="off"
@@ -58,7 +58,7 @@ const HomeComponent = (props) => {
               Password &nbsp;&nbsp;&nbsp;
             </span>
             <div
-              className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded relative w-10/12 mx-auto my-4"
+              className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded relative w-10/12 mx-auto my-4 text-sm"
               role="alert"
               style={
                 props.restrictDemo ? { display: "block" } : { display: "none" }
@@ -70,13 +70,13 @@ const HomeComponent = (props) => {
               <span className="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
             </div>
             <div
-              className="flex justify-between flex-row my-4 mx-6"
+              className="flex justify-between flex-col md:flex-row my-4 mx-6"
               style={
                 !props.restrictDemo ? { display: "block" } : { display: "none" }
               }
-            >
+              >
               <input
-                className=" p-1 outline-none border border-purple-400 w-4/12 text-sm ml-2 rounded border-opacity-50"
+                className=" p-1 outline-none border border-purple-400 w-6/12 md:w-4/12 text-sm ml-2 rounded border-opacity-50 md:my-0 my-2"
                 type="password"
                 name="newPassword"
                 autoComplete="off"
@@ -85,7 +85,7 @@ const HomeComponent = (props) => {
                 value={props.info.newPassword}
               ></input>
               <input
-                className=" p-1 outline-none border border-purple-400 w-4/12 text-sm ml-2 rounded border-opacity-50"
+                className=" p-1 outline-none border border-purple-400 w-6/12 md:w-4/12 text-sm ml-2 rounded border-opacity-50 md:my-0 my-2"
                 type="password"
                 placeholder="Confirm Password"
                 onChange={props.handleChange}

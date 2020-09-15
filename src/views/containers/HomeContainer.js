@@ -135,7 +135,7 @@ const HomeContainer = (props) => {
               src="public/imgs/internet-white.png"
               style={{animation: "fadein 1.5s linear"}}
               className="self-center"
-            /><span className="text my-2 text-center text-sm text-white" style={{animation: "fadein 1s linear"}}>Any URL</span>
+            /><span className="text my-2 text-center md:text-sm text-xs text-white" style={{animation: "fadein 1s linear"}}>Any URL</span>
           </div>
     
           <div className="image-and-text ml-16 flex self-center flex-col">
@@ -145,7 +145,7 @@ const HomeContainer = (props) => {
               src="public/imgs/hammer-white-purple.png"
               style={{animation: "fadein 1.5s linear 0.4s"}}
               className="self-center"
-            /><span className="text my-2 text-center text-sm text-white" style={{animation: "fadein 1s linear 0.4s"}}>Shorten and customize.</span>
+            /><span className="text my-2 text-center md:text-sm text-xs text-white" style={{animation: "fadein 1s linear 0.4s"}}>Shorten and customize.</span>
           </div>
           
           <div className="image-and-text flex self-center flex-col">
@@ -155,7 +155,7 @@ const HomeContainer = (props) => {
               src="public/imgs/check-mark-purple.png"
               style={{animation: "fadein 1.5s linear 0.8s"}}
               className="self-center"
-            /><span className="text my-2 text-center text-sm text-white" style={{animation: "fadein 1s linear 0.8s"}}>Use it anywhere</span>
+            /><span className="text my-2 text-center md:text-sm text-xs text-white" style={{animation: "fadein 1s linear 0.8s"}}>Use it anywhere</span>
           </div>
         </div>
       </div>
