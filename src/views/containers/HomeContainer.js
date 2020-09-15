@@ -103,9 +103,8 @@ const HomeContainer = (props) => {
           backgroundImage: "url('public/imgs/HeaderImageBlack.png')",
           backgroundRepeat: "no-repeat",
           backgroundColor: "black",
-          height: "100vh",
         }}
-        className=""
+        className="h-screen"
       >
         <HomeComponent
           info={props.app}
@@ -127,7 +126,7 @@ const HomeContainer = (props) => {
           <HistoryConnected />
         </div>
         <div className="w-full bg-black py-8">
-        <div id="wrapper" className="mx-auto w-10/12 flex flex-col bg-black">
+        <div id="wrapper" className="mx-auto w-10/12 flex flex-col bg-black md:pt-8">
         <div id="icons" className="flex flex-row justify-between">
           <div className="image-and-text text-white flex self-center flex-col">
             <img

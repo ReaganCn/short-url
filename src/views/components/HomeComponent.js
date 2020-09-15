@@ -147,13 +147,13 @@ const HomeComponent = (props) => {
       {/*---------------------------------- MENU ----------------------------------*/}
 
       <div className="flex justify-between mx-5" id="menu">
-        <span className="text-white font-semibold ml-2 font-opensans mt-3 cursor-pointer hover:text-purple-200">
+        <span className="text-white font-semibold font-opensans mt-3 cursor-pointer hover:text-purple-200 md:text-base text-xs">
           About
         </span>
         <div className="flex mt-3 flex-col hover:text-purple-200">
           <button
             id="account-button"
-            className="text-white font-semibold font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300 md:w-64"
+            className="text-white font-semibold font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300 md:w-64 md:text-base text-xs"
             onClick={props.accountMenuToggle}
           >
             {props.greeting}, {props.info.firstName}
@@ -162,7 +162,7 @@ const HomeComponent = (props) => {
 
           <div className="relative md:ml-8 w-full md:w-11/12" id="account-menu">
             <div
-              className="w-full flex flex-col z-10 bg-white font-opensans h-20 md:w-11/12 justify-between p-2 rounded text-center shadow-xl absolute left-0"
+              className="w-full flex flex-col z-10 bg-white font-opensans md:h-16 h-12 p-1 md:w-11/12 justify-between md:p-2 rounded text-center shadow-xl absolute left-0"
               style={
                 props.showAccountMenu
                   ? { 
@@ -173,14 +173,14 @@ const HomeComponent = (props) => {
               }
             >
               <button
-                className="w-full text-darkviolet cursor-pointer hover:bg-darkviolet self-center rounded mx-auto hover:text-white"
+                className="w-full text-darkviolet cursor-pointer hover:bg-darkviolet self-center rounded mx-auto hover:text-white text-xs md:text-sm"
                 onClick={props.accountSettingsToggle}
               >
                 Profile Settings&nbsp;&nbsp;&nbsp;
                 <i className="fa fa-caret-right"></i>
               </button>
               <button
-                className=" w-full mx-auto text-purple-600 font-bold cursor-pointer hover:bg-darkviolet hover:text-white rounded"
+                className=" w-full mx-auto text-purple-600 font-bold cursor-pointer hover:bg-darkviolet hover:text-white rounded text-xs md:text-sm"
                 onClick={props.logOut}
               >
                 Logout&nbsp;&nbsp;&nbsp;<i className="fa fa-sign-out"></i>
@@ -197,7 +197,7 @@ const HomeComponent = (props) => {
           id="logo-dot"
           src="public/imgs/logo-dot-white.png"
           // style={{ width: "25px", height: "25px" }}
-          className="w-6 h-6 mb-10"
+          className=" w-3 md:w-6  h-3 md:h-6 mb-10"
         />
       </div>
 

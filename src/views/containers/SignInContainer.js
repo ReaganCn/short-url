@@ -125,7 +125,6 @@ const SignInContainer = (props) => {
       username: props.state.username,
       password: props.state.password,
     };
-    console.log(data);
     setisFetching(true);
     fetch(url, {
       method: "POST",
