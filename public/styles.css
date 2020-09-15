@@ -91,9 +91,25 @@ button {
     transform: rotate(360deg);
   }
 }
+
+@keyframes pan {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-15px);
+    opacity: 0.5;
+  }
+
+  100% {
+  transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+
 /* 
-
-
 #account-button:focus ~ #account-menu {
   display: block;
 }

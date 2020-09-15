@@ -126,6 +126,42 @@ const HomeContainer = (props) => {
         <div className="flex flex-col bg-black mx-auto">
           <HistoryConnected />
         </div>
+        <div className="w-full bg-black py-8">
+        <div id="wrapper" className="mx-auto w-10/12 flex flex-col bg-black">
+        <div id="icons" className="flex flex-row justify-between">
+          <div className="image-and-text text-white flex self-center flex-col">
+            <img
+              width="30px"
+              height="30px"
+              src="public/imgs/internet-white.png"
+              style={{animation: "fadein 1.5s linear"}}
+              className="self-center"
+            /><span className="text my-2 text-center text-sm text-white" style={{animation: "fadein 1s linear"}}>Any URL</span>
+          </div>
+    
+          <div className="image-and-text ml-16 flex self-center flex-col">
+            <img
+              width="30px"
+              height="30px"
+              src="public/imgs/hammer-white-purple.png"
+              style={{animation: "fadein 1.5s linear 0.4s"}}
+              className="self-center"
+            /><span className="text my-2 text-center text-sm text-white" style={{animation: "fadein 1s linear 0.4s"}}>Shorten and customize.</span>
+          </div>
+          
+          <div className="image-and-text flex self-center flex-col">
+            <img
+              width="30px"
+              height="30px"
+              src="public/imgs/check-mark-purple.png"
+              style={{animation: "fadein 1.5s linear 0.8s"}}
+              className="self-center"
+            /><span className="text my-2 text-center text-sm text-white" style={{animation: "fadein 1s linear 0.8s"}}>Use it anywhere</span>
+          </div>
+        </div>
+      </div>
+        </div>
+
       </div>
     </Fragment>
   );
