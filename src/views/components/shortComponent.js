@@ -40,8 +40,9 @@ const ShortComponent = (props) => {
           />
         </button>
       </form>
+       {/* ------------------------------- OUTPUT --------------------------------- */}
       <div
-        className="flex-row self-start mt-12"
+        className="flex-row self-start my-6"
         id="output"
         style={
           props.input.shorturl === ""
@@ -54,8 +55,7 @@ const ShortComponent = (props) => {
             <i className="fa fa-globe pr-2 text-purple-400"></i>
             {props.handleUrl}
           </p>
-
-          {/* Customize link section */}
+      {/* -------------------- Customize link section  ------------------------- */}
           {props.customize ? (
             <div
               id="customize-box "
