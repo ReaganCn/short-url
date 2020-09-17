@@ -3,13 +3,13 @@ import React, { Fragment } from "react";
 const SigninForm = (props) => {
   return (
     <Fragment>
-      <form className="md:w-1/3 self-center sign-in" onSubmit={props.login}>
-        <p className="lg:text-2xl font-bold md:text-xl text-lg tracking-wide pb-2">
+      <form className="w-full md:w-1/3 self-center sign-in" onSubmit={props.login}>
+        <p className="lg:text-2xl font-bold md:text-xl text-base tracking-wide pb-2">
           Sign in to your account
         </p>
 
         <div className="mb-3">
-          <label className="block font-semibold font-md" name="username">
+          <label className="block font-semibold text-sm md:text-base" name="username">
             Username
           </label>
           <input
@@ -21,7 +21,7 @@ const SigninForm = (props) => {
           />
         </div>
         <div className="mb-3">
-          <label className="block font-semibold font-md" name="password">
+          <label className="block font-semibold text-sm md:text-base" name="password">
             Password
           </label>
           <input
@@ -33,7 +33,7 @@ const SigninForm = (props) => {
           ></input>
         </div>
         <button
-          className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold text-sm hover:bg-purple-800"
+          className="bg-purple-700 w-full p-2 text-white rounded mb-3 font-semibold md:text-sm text-xs hover:bg-purple-800"
           type="submit"
         >
           <span
@@ -57,7 +57,7 @@ const SigninForm = (props) => {
             src="public/imgs/customloader-white.png"
           />
         </button>
-        <p className="mb-3 text-sm">
+        <p className="mb-3 md:text-sm text-xs">
           Don't have an account?
           <a
             onClick={props.toggleForm}
@@ -67,7 +67,7 @@ const SigninForm = (props) => {
           </a>
         </p>
       </form>
-      <div className="md:w-2/3 sign-up half relative flex justify-center content-center">
+      <div className="md:w-2/3 sign-up half relative md:flex justify-center content-center hidden">
         <div className="mx-auto self-center">
           <img
             src="public/imgs/young-people-working-computer.jpg"

@@ -162,8 +162,8 @@ const SignInContainer = (props) => {
   return (
     <Fragment>
       <div className="w-full h-full">
-        <div id="logo" className="w-2/12 mx-auto flex items-end">
-          <img src="public/imgs/logo.png" className="inline-block " />
+        <div id="logo" className="md:w-2/12 mx-auto flex items-end w-6/12">
+          <img src="public/imgs/logo.png" className="inline-block w-12/12" />
           <img
             id="logo-dot"
             src="public/imgs/logo-dot.png"
@@ -172,18 +172,18 @@ const SignInContainer = (props) => {
           />
         </div>
         <div className="text-center flex flex-col">
-          <span className="font-opensans md:text-2xl font-semibold text-lg">
+          <span className="font-opensans md:text-2xl font-semibold text-sm">
             Get short and customized links in an instant
           </span>
           <span
-            className="font-opensans md:text-xs font-semibold my-1 text-darkviolet cursor-pointer hover:text-purple-600"
+            className="font-opensans md:text-xs font-semibold my-1 text-darkviolet cursor-pointer hover:text-purple-600 text-xs"
             onClick={() => loginDemo(event)}
           >
             Don't want create an account? Click here to sign in with the demo
             account.
           </span>
         </div>
-        <div className="container w-3/4  border rounded-lg mx-auto md:mt-10 shadow-2xl">
+        <div className="w-11/12 container md:w-3/4  border rounded-lg mx-auto md:mt-10 shadow-2xl p-3  mt-16 md:p-0">
           <div
             style={showAlert ? { display: "block" } : { display: "none" }}
             className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-4 text-sm font-opensans"
