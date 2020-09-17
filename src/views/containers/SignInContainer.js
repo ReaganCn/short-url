@@ -183,7 +183,7 @@ const SignInContainer = (props) => {
             account.
           </span>
         </div>
-        <div className="w-11/12 container md:w-3/4  border rounded-lg mx-auto md:mt-10 shadow-2xl p-3  mt-16 md:p-0">
+        <div className="w-11/12 container md:w-3/4  border rounded-lg mx-auto md:mt-10 shadow-2xl p-3 mt-12 md:p-0">
           <div
             style={showAlert ? { display: "block" } : { display: "none" }}
             className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-4 text-sm font-opensans"
