@@ -115,7 +115,7 @@ const ShortContainer = (props) => {
     }, 3000);
   };
   const copyUrl = () => {
-    copy(`link0.ga/${evaluateShort()}`);
+    copy(`http://www.shrtly.ga/${evaluateShort()}`);
     handleCopyPopup();
   };
   const customizeHandler = () => {

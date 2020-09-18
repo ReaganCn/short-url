@@ -21,14 +21,11 @@ const HistoryComponent = (props) => {
 
       
       <p className="font-semibold text-md">
-          link0.ga/{props.shorturl}
+         shrtly.ga/{props.shorturl}
         </p>
-
         <button onClick={props.copyOldShort} className="border font-bold my-0 p-1 rounded-full text-xs px-3 bg-white text-purple-600 border-darkviolet hover:text-white hover:bg-darkviolet hover:border-white md:px-6">
         {props.info.copied ? "Copied!" : "Copy"}
         </button>
-
-        
       </div>
 
       <div className="flex flex-row justify-between mb-2 self-end">

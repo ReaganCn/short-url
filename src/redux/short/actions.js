@@ -36,7 +36,7 @@ const getShortUrl = (data, user) => {
     dispatch(submitAction());
     //console.log("here")
     return fetch(
-      `https://reagan-urlshort.glitch.me/shorturl?username=${user}`,
+      `http://www.shrtly.ga/shorturl?username=${user}`,
       {
         method: "POST",
         headers: {
@@ -58,7 +58,7 @@ const customizeLink = (id, url, username) => {
   return (dispatch) => {
     dispatch(postingCustom());
     return fetch(
-      `https://reagan-urlshort.glitch.me/shorturl/custom/${username}?id=${id}`,
+      `http://www.shrtly.ga/shorturl/custom/${username}?id=${id}`,
       {
           method: "POST",
           headers: {

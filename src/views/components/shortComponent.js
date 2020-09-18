@@ -61,7 +61,7 @@ const ShortComponent = (props) => {
               id="customize-box "
               className="md:self-center font-semibold text-blue-300 md:text-lg mx-auto"
             >
-              <span>link0.ga/</span>
+              <span>shrtly.ga/</span>
               <input
                 type="text"
                 name="customurl"
@@ -74,10 +74,10 @@ const ShortComponent = (props) => {
           ) : (
             <a
               className="md:self-center font-semibold text-blue-300 hover:underline md:text-lg mx-auto"
-              href={`http://link0.ga/${props.shorturl}`}
+              href={`http://www.shrtly.ga/${props.shorturl}`}
               target="_blank"
             >
-              link0.ga/{props.shorturl}
+              shrtly.ga/{props.shorturl}
             </a>
           )}
           <div className="flex md:flex-row flex-row justify-between my-1 md:my-0">

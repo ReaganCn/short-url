@@ -7,7 +7,7 @@ const defaultState = {
   shorturl: "",
   customurl: "",
   custom: "",
-  domain: "https://reagan-urlshort.glitch.me/shorturl/",
+  domain: "http://www.shrtly.ga/shorturl/",
   isFetching: null,
   fetchingCustom: false
 };

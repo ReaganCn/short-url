@@ -89,7 +89,7 @@ const SignInContainer = (props) => {
     if (samePassword && props.state.password.length > 1) {
       setisFetching(true);
       // console.log(JSON.stringify(props.state))
-      fetch("https://reagan-urlshort.glitch.me/users/add", {
+      fetch("http://www.shrtly.ga/users/add", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -119,7 +119,7 @@ const SignInContainer = (props) => {
 
   const loginUser = (event) => {
     // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://reagan-urlshort.glitch.me/users/authenticate";
+    const url = "http://www.shrtly.ga/users/authenticate";
 
     const data = {
       username: props.state.username,

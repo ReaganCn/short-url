@@ -73,7 +73,7 @@ const HistoryContainer = (props) => {
 
 
   const copyHistoryLinks = (link, id) => {
-    copy(`link0.ga/${link}`);
+    copy(`www.shrtly.ga/${link}`);
     props.updateHistoryCopy(id);
     setTimeout(() => {
       console.log("here");
