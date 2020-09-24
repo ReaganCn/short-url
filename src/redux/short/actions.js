@@ -36,7 +36,7 @@ const getShortUrl = (data, user) => {
     dispatch(submitAction());
     //console.log("here")
     return fetch(
-      `http://www.shrtly.ga/shorturl?username=${user}`,
+      `https://www.shrtly.ga/shorturl?username=${user}`,
       {
         method: "POST",
         headers: {
@@ -58,7 +58,7 @@ const customizeLink = (id, url, username) => {
   return (dispatch) => {
     dispatch(postingCustom());
     return fetch(
-      `http://www.shrtly.ga/shorturl/custom/${username}?id=${id}`,
+      `https://www.shrtly.ga/shorturl/custom/${username}?id=${id}`,
       {
           method: "POST",
           headers: {

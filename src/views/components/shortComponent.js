@@ -74,7 +74,7 @@ const ShortComponent = (props) => {
           ) : (
             <a
               className="md:self-center font-semibold text-blue-300 hover:underline md:text-lg mx-auto"
-              href={`http://www.shrtly.ga/${props.shorturl}`}
+              href={`https://shrtly.ga/${props.shorturl}`}
               target="_blank"
             >
               shrtly.ga/{props.shorturl}

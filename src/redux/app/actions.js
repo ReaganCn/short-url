@@ -100,7 +100,7 @@ const logoutAction = () => {
 const getLinks = (username) => {
   return (dispatch) => {
     dispatch(requestLinks())
-    return fetch(`http://www.shrtly.ga/users/links?username=${username}`)
+    return fetch(`https://www.shrtly.ga/users/links?username=${username}`)
     .then (doc => doc.json())
     .then(data => dispatch(receiveLinks(data)) )
     .catch(err => console.log(err));
@@ -122,7 +122,7 @@ const failedAutoLogin = () => {
 
 const receiveUser = () => {
   return (dispatch) => {
-    return fetch("http://www.shrtly.ga/users/user", {
+    return fetch("https://www.shrtly.ga/users/user", {
       credentials:'include',
       headers: {
         "Content-type": "application/json",
@@ -145,7 +145,7 @@ const receiveUser = () => {
 
 const logOutRequest = () => {
   return (dispatch) => {
-    return fetch('http://www.shrtly.ga/users/user/logout',{
+    return fetch('https://www.shrtly.ga/users/user/logout',{
       credentials: 'include'
     })
     .then(doc => doc.json())
@@ -161,7 +161,7 @@ const logOutRequest = () => {
 const updateDetailsRequest = (data) => {
   return (dispatch) => {
     dispatch(requestUpdate())
-    return fetch("http://www.shrtly.ga/users/update", {
+    return fetch("https://www.shrtly.ga/users/update", {
     method: "POST",  
     credentials: 'include',
     headers: {
