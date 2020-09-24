@@ -47,6 +47,7 @@ const greetingsHandler = () => {
 
 const HomeContainer = (props) => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const [showAbout, setShowAbout] = useState(true);
   const [showAccountSettings, setShowAccountSettings] = useState(false);
   const [samePassword, setsamePassword] = useState(false);
   const [validInfo, setvalidInfo] = useState(false);
@@ -76,6 +77,14 @@ const HomeContainer = (props) => {
     showAccountSettings
       ? setShowAccountSettings(false)
       : setShowAccountSettings(true);
+  };
+
+  const handleAboutHover = () => {
+    showAbout ? setShowAbout(false) : setShowAbout(true);
+  }
+
+  const aboutToggle = () => {
+    showAbout ? setShowAbout(false) : setShowAbout(true);
   };
 
   const updateInfo = (event) => {
@@ -110,6 +119,8 @@ const HomeContainer = (props) => {
           info={props.app}
           greeting={greetingsHandler()}
           accountMenuToggle={() => accountMenuToggle()}
+          aboutToggle={()=> aboutToggle()}
+          showAbout={showAbout}
           showAccountSettings={showAccountSettings}
           accountSettingsToggle={() => accountSettingsToggle()}
           showAccountMenu={showAccountMenu}

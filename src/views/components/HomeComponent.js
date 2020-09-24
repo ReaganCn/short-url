@@ -74,7 +74,7 @@ const HomeComponent = (props) => {
               style={
                 !props.restrictDemo ? { display: "block" } : { display: "none" }
               }
-              >
+            >
               <input
                 className=" p-1 outline-none border border-purple-400 w-6/12 md:w-4/12 text-sm ml-2 rounded border-opacity-50 md:my-0 my-2"
                 type="password"
@@ -122,15 +122,23 @@ const HomeComponent = (props) => {
       </div>
 
       {/*---------------------------------- ALERT ----------------------------------*/}
-      <div className="relative w-full flex justify-center mx-auto" style={props.info.alert ? {visibility:"visible"}: {visibility: "collapse"}}>
+      <div
+        className="relative w-full flex justify-center mx-auto"
+        style={
+          props.info.alert
+            ? { visibility: "visible" }
+            : { visibility: "collapse" }
+        }
+      >
         <div
           className="bg-purple-100 border border-purple-400 text-purple-700 px-4 py-2 rounded absolute text-sm w-4/12 z-10 mt-8"
           role="alert"
         >
-          <span className="block sm:inline">
-            {props.info.alertMessage}
-          </span>
-          <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={props.resetAlert}>
+          <span className="block sm:inline">{props.info.alertMessage}</span>
+          <span
+            className="absolute top-0 bottom-0 right-0 px-4 py-3"
+            onClick={props.resetAlert}
+          >
             <svg
               className="fill-current h-4 w-4 text-purple-500"
               role="button"
@@ -144,12 +152,36 @@ const HomeComponent = (props) => {
         </div>
       </div>
 
-      {/*---------------------------------- MENU ----------------------------------*/}
+      {/*---------------------------------- ABOUT MENU ----------------------------------*/}
 
       <div className="flex justify-between mx-5" id="menu">
+        <div className="md:w-1/4 w-6/12 flex flex-col">
         <span className="text-white font-semibold font-opensans mt-3 cursor-pointer hover:text-purple-200 md:text-base text-xs">
           About
         </span>
+        {/*---------------------------------- About Dropdown ---------------------------------- */}
+        <div className="relative md:ml-8 w-full md:w-11/12 mt-1" id="account-menu">
+          <div
+            className="w-full flex flex-col z-10 bg-darkviolet text-white font-opensans p-1 md:w-11/12 md:p-2 rounded text-left shadow-xl absolute left-0 md:text-sm text-xs"
+            style={
+              props.showAbout
+                ? {
+                    visibility: "visible",
+                    animation: "0.7s linear 0s 1 normal none running fadein",
+                  }
+                : { visibility: "collapse" }
+            }
+          >
+            <span>
+            <p className=""><i className="fa fa-terminal"></i> &nbsp;&nbsp;Created by Charana Reagan</p> <br />
+            <p className=""><i className="fa fa-laptop"></i> &nbsp; GitHub:<a href="https://github.com/ReaganCn" className=" text-blue-500" target="_blank"> ReaganCn </a></p>
+            </span>
+          </div>
+        </div>
+        </div>
+
+        {/*---------------------------------- ACCOUNT MENU ---------------------------------- */}
+
         <div className="flex mt-3 flex-col hover:text-purple-200">
           <button
             id="account-button"
@@ -165,7 +197,7 @@ const HomeComponent = (props) => {
               className="w-full flex flex-col z-10 bg-white font-opensans md:h-16 h-12 p-1 md:w-11/12 justify-between md:p-2 rounded text-center shadow-xl absolute left-0"
               style={
                 props.showAccountMenu
-                  ? { 
+                  ? {
                       visibility: "visible",
                       animation: "0.7s linear 0s 1 normal none running fadein",
                     }
@@ -189,7 +221,7 @@ const HomeComponent = (props) => {
           </div>
         </div>
       </div>
-{/*---------------------------------- HEADER ----------------------------------*/}
+      {/*---------------------------------- HEADER ----------------------------------*/}
 
       <div id="logo" className="w-4/12 mx-auto flex items-end">
         <img src="public/imgs/logo3.png" className="inline-block xl:max-w-lg" />
