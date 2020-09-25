@@ -154,13 +154,15 @@ const HomeComponent = (props) => {
 
       {/*---------------------------------- ABOUT MENU ----------------------------------*/}
 
-      <div className="flex justify-between mx-5" id="menu">
-        <div className="md:w-1/4 w-6/12 flex flex-col">
-        <span className="text-white font-semibold font-opensans mt-3 cursor-pointer hover:text-purple-200 md:text-base text-xs">
+      <div className="flex justify-between mx-5" id="menu" >
+        <div className="md:w-1/4 w-6/12 flex flex-col" onMouseOut={props.handleOut} onMouseOver={props.handleAboutHover}>
+        <span className="text-white font-semibold font-opensans mt-3 cursor-pointer hover:text-purple-200 md:text-base text-xs"
+        onClick={props.aboutMenuToggle}
+        >
           About
         </span>
         {/*---------------------------------- About Dropdown ---------------------------------- */}
-        <div className="relative md:ml-8 w-full md:w-11/12 mt-1" id="account-menu">
+        <div className="relative md:ml-8 w-full md:w-11/12 mt-1" id="about-menu" style={props.showAbout ? {display: "block"} : {display:"none"}}>
           <div
             className="w-full flex flex-col z-10 bg-darkviolet text-white font-opensans p-1 md:w-11/12 md:p-2 rounded text-left shadow-xl absolute left-0 md:text-sm text-xs"
             style={
@@ -182,7 +184,7 @@ const HomeComponent = (props) => {
 
         {/*---------------------------------- ACCOUNT MENU ---------------------------------- */}
 
-        <div className="flex mt-3 flex-col hover:text-purple-200">
+        <div className="flex mt-3 flex-col hover:text-purple-200" onMouseOver={props.handleAccountHover} onMouseOut={props.handleOutAccount}>
           <button
             id="account-button"
             className="text-white font-semibold font-opensans cursor-pointer hover:text-purple-200 focus:text-purple-300 md:w-64 md:text-base text-xs"

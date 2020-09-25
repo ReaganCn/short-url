@@ -47,7 +47,7 @@ const greetingsHandler = () => {
 
 const HomeContainer = (props) => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
-  const [showAbout, setShowAbout] = useState(true);
+  const [showAbout, setShowAbout] = useState(false);
   const [showAccountSettings, setShowAccountSettings] = useState(false);
   const [samePassword, setsamePassword] = useState(false);
   const [validInfo, setvalidInfo] = useState(false);
@@ -80,12 +80,25 @@ const HomeContainer = (props) => {
   };
 
   const handleAboutHover = () => {
+    !showAbout && setShowAbout(true);
+  }
+  const aboutMenuToggle = () => {
     showAbout ? setShowAbout(false) : setShowAbout(true);
   }
+  const handleOut = () => {
+    showAbout && setShowAbout(false) 
+  }
 
-  const aboutToggle = () => {
-    showAbout ? setShowAbout(false) : setShowAbout(true);
-  };
+  const handleAccountHover = () => {
+    !showAccountMenu && setShowAccountMenu(true);
+  }
+  const handleOutAccount = () => {
+    showAccountMenu && setShowAccountMenu(false) 
+  }
+
+  // const aboutToggle = () => {
+  //   showAbout ? setShowAbout(false) : setShowAbout(true);
+  // };
 
   const updateInfo = (event) => {
       if (samePassword && props.app.newPassword.length > 2) {
@@ -119,7 +132,11 @@ const HomeContainer = (props) => {
           info={props.app}
           greeting={greetingsHandler()}
           accountMenuToggle={() => accountMenuToggle()}
-          aboutToggle={()=> aboutToggle()}
+          handleAboutHover={()=> handleAboutHover()}
+          handleAccountHover={()=>handleAccountHover()}
+          handleOutAccount={()=>handleOutAccount()}
+          aboutMenuToggle={()=> aboutMenuToggle()}
+          handleOut={()=> handleOut()}
           showAbout={showAbout}
           showAccountSettings={showAccountSettings}
           accountSettingsToggle={() => accountSettingsToggle()}
